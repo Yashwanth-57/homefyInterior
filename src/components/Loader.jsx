@@ -8,8 +8,23 @@ export default function Loader({ onFinish }) {
   useEffect(() => {
 
     const timer = setTimeout(() => {
+
+      // ✅ FORCE SCROLL RESET
+      window.history.scrollRestoration = "manual";
+
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: "instant"
+      });
+
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+
       setVisible(false);
+
       onFinish();
+
     }, 2200);
 
     return () => clearTimeout(timer);

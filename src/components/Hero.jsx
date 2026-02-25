@@ -228,70 +228,163 @@
 //   );
 
 // }
+import {
+  motion,
+  useMotionValue,
+  useTransform
+} from "framer-motion";
 
-import { motion } from "framer-motion";
+import {
+  useEffect,
+  useState
+} from "react";
 
-export default function Hero() {
+import { useNavigate } from "react-router-dom";
+
+export default function UltraPremiumHero() {
+
+  const navigate = useNavigate();
+
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+
+  const bgX = useTransform(mouseX, [-500, 500], [-30, 30]);
+  const bgY = useTransform(mouseY, [-500, 500], [-30, 30]);
+
+  const textX = useTransform(mouseX, [-500, 500], [-15, 15]);
+  const textY = useTransform(mouseY, [-500, 500], [-15, 15]);
+
+  const luxuryWords = [
+    "Masterpiece",
+    "Luxury",
+    "Elegance",
+    "Perfection",
+    "Dream Space"
+  ];
+
+  const [wordIndex, setWordIndex] = useState(0);
+
+  useEffect(() => {
+
+    const mouseMove = (e) => {
+
+      const centerX = window.innerWidth / 2;
+      const centerY = window.innerHeight / 2;
+
+      mouseX.set(e.clientX - centerX);
+      mouseY.set(e.clientY - centerY);
+
+    };
+
+    window.addEventListener("mousemove", mouseMove);
+
+    const interval = setInterval(() => {
+
+      setWordIndex(prev =>
+        prev === luxuryWords.length - 1 ? 0 : prev + 1
+      );
+
+    }, 2500);
+
+    return () => {
+      window.removeEventListener("mousemove", mouseMove);
+      clearInterval(interval);
+    };
+
+  }, []);
 
   return (
+
     <section className="relative h-screen w-full overflow-hidden bg-black">
 
-      {/* Background Image */}
-      <motion.img
+      {/* Video Background */}
+      <motion.video
 
-        src="https://images.unsplash.com/photo-1618220179428-22790b461013"
+        autoPlay
+        muted
+        loop
+        playsInline
 
-        initial={{ scale: 1.2 }}
-        animate={{ scale: 1 }}
-
-        transition={{ duration: 2 }}
+        style={{
+          x: bgX,
+          y: bgY
+        }}
 
         className="
-          absolute w-full h-full object-cover
-          brightness-[0.4]
+          absolute
+          w-[110%]
+          h-[110%]
+          object-cover
+          brightness-[0.45]
+        "
+      >
+        <source src="https://videos.pexels.com/video-files/7578552/7578552-uhd_2560_1440_30fps.mp4" type="video/mp4" />
+      </motion.video>
+
+
+      {/* Luxury Gradient */}
+      <div className="
+        absolute inset-0
+        bg-gradient-to-br
+        from-black
+        via-black/40
+        to-black
+      " />
+
+
+      {/* Golden Glow */}
+      <motion.div
+
+        animate={{
+          opacity: [0.15, 0.35, 0.15]
+        }}
+
+        transition={{
+          duration: 4,
+          repeat: Infinity
+        }}
+
+        className="
+          absolute inset-0
+          bg-[radial-gradient(circle_at_30%_30%,rgba(255,215,0,0.2),transparent_60%)]
         "
       />
 
 
-
-      {/* Gradient Overlay */}
-      <div className="
-        absolute inset-0
-        bg-gradient-to-t
-        from-black via-black/40 to-transparent
-      "></div>
-
-
-
       {/* Content */}
-      <div className="
-        relative z-10
-        h-full
-        max-w-7xl mx-auto
-        px-6
-        flex flex-col
-        justify-center
-      ">
+      <motion.div
 
+        style={{
+          x: textX,
+          y: textY
+        }}
+
+        className="
+          relative z-10
+          h-full
+          max-w-7xl
+          mx-auto
+          px-6
+          flex flex-col
+          justify-center
+        "
+      >
 
         {/* Tag */}
         <motion.p
 
-          initial={{ opacity: 0, y: 40 }}
+          initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-
-          transition={{ delay: 0.3 }}
 
           className="
             text-yellow-400
-            tracking-[0.3em]
-            text-sm
+            tracking-[0.4em]
+            text-xs sm:text-sm
             mb-4
           "
         >
-          LUXURY INTERIOR DESIGN
+          PREMIUM INTERIOR DESIGN
         </motion.p>
-
 
 
         {/* Heading */}
@@ -300,23 +393,51 @@ export default function Hero() {
           initial={{ opacity: 0, y: 60 }}
           animate={{ opacity: 1, y: 0 }}
 
-          transition={{ delay: 0.5 }}
-
           style={{ fontFamily: "Playfair Display" }}
 
           className="
             text-white
             text-4xl
-            sm:text-5xl
+            sm:text-6xl
             md:text-7xl
             font-light
             leading-tight
-            max-w-4xl
           "
         >
-          Transform Your Space Into A Masterpiece
-        </motion.h1>
+          Transform Your Space Into
 
+          <span className="block text-yellow-400 h-[80px]">
+
+            <motion.span
+
+              key={wordIndex}
+
+              initial={{
+                opacity: 0,
+                y: 40
+              }}
+
+              animate={{
+                opacity: 1,
+                y: 0
+              }}
+
+              exit={{
+                opacity: 0,
+                y: -40
+              }}
+
+              transition={{
+                duration: 0.6
+              }}
+
+            >
+              {luxuryWords[wordIndex]}
+            </motion.span>
+
+          </span>
+
+        </motion.h1>
 
 
         {/* Description */}
@@ -325,102 +446,115 @@ export default function Hero() {
           initial={{ opacity: 0, y: 60 }}
           animate={{ opacity: 1, y: 0 }}
 
-          transition={{ delay: 0.7 }}
-
           className="
             text-white/70
             mt-6
             max-w-xl
-            text-sm
-            md:text-lg
+            text-sm md:text-lg
           "
         >
-          We create timeless interiors combining elegance, comfort,
-          and modern luxury tailored perfectly for your lifestyle.
+          Where architecture meets emotion. We craft interiors
+          that define prestige, elegance, and timeless beauty.
         </motion.p>
 
 
-
         {/* Buttons */}
-        <motion.div
+        <div className="flex gap-4 mt-8 flex-wrap">
 
-          initial={{ opacity: 0, y: 60 }}
-          animate={{ opacity: 1, y: 0 }}
+          <MagneticButton
+            text="View Projects"
+            onClick={() => navigate("/projects")}
+          />
 
-          transition={{ delay: 0.9 }}
+          <MagneticButton
+            text="Cost Calculator"
+            onClick={() => navigate("/calculator")}
+            secondary
+          />
 
-          className="flex flex-wrap gap-4 mt-8"
-        >
+        </div>
 
-          {/* Primary Button */}
-          <motion.button
-
-            whileHover={{
-              scale: 1.05,
-              backgroundColor: "#FFD700",
-              color: "#000"
-            }}
-
-            whileTap={{ scale: 0.95 }}
-
-            className="
-              px-8 py-4
-              border border-yellow-400
-              text-yellow-400
-              font-medium
-              tracking-wider
-              transition
-            "
-          >
-            View Projects
-          </motion.button>
-
-
-
-          {/* Secondary Button */}
-          <motion.button
-
-            whileHover={{
-              scale: 1.05,
-              borderColor: "#FFD700",
-              color: "#FFD700"
-            }}
-
-            whileTap={{ scale: 0.95 }}
-
-            className="
-              px-8 py-4
-              border border-white/30
-              text-white
-              tracking-wider
-              transition
-            "
-          >
-            Contact Us
-          </motion.button>
-
-        </motion.div>
-
-
-      </div>
+      </motion.div>
 
 
       {/* Scroll Indicator */}
       <motion.div
 
-        animate={{ y: [0, 10, 0] }}
-        transition={{ repeat: Infinity, duration: 1.5 }}
+        animate={{ y: [0, 12, 0] }}
+
+        transition={{
+          repeat: Infinity,
+          duration: 1.5
+        }}
 
         className="
-          absolute bottom-8 left-1/2
-          transform -translate-x-1/2
+          absolute bottom-6
+          left-1/2
+          -translate-x-1/2
           text-white/60
+          text-xl
         "
       >
         ↓
       </motion.div>
 
-
     </section>
+
   );
+}
+
+
+
+/* Magnetic Button Component */
+
+function MagneticButton({ text, onClick, secondary }) {
+
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+
+  const handleMouse = (e) => {
+
+    const rect = e.currentTarget.getBoundingClientRect();
+
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+
+    x.set((e.clientX - centerX) * 0.3);
+    y.set((e.clientY - centerY) * 0.3);
+
+  };
+
+  const reset = () => {
+    x.set(0);
+    y.set(0);
+  };
+
+  return (
+
+    <motion.button
+
+      style={{ x, y }}
+
+      onMouseMove={handleMouse}
+      onMouseLeave={reset}
+      onClick={onClick}
+
+      whileTap={{ scale: 0.95 }}
+
+      className={`
+        px-8 py-4
+        tracking-wider
+        transition
+        border
+        ${secondary
+          ? "border-white/30 text-white"
+          : "border-yellow-400 text-yellow-400"
+        }
+      `}
+    >
+      {text}
+    </motion.button>
+
+  );
+
 }

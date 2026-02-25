@@ -185,69 +185,126 @@
 //   );
 
 // }
-import { useState } from "react";
-import { motion } from "framer-motion";
-import ProjectModal from "./ProjectModal";
 
-const projects = [
-  { img: "https://images.unsplash.com/photo-1618220179428-22790b461013", title: "Luxury Living Room", category: "Residential Interior" },
-  { img: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c", title: "Modern Kitchen", category: "Modular Design" },
-  { img: "https://images.unsplash.com/photo-1600210492493-0946911123ea", title: "Premium Bedroom", category: "Luxury Interior" },
-  { img: "https://images.unsplash.com/photo-1615874959474-d609969a20ed", title: "Office Interior", category: "Commercial Design" },
-];
+import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
+import { projectsData } from "../data/ProjectsData";
 
 export default function Projects() {
-  const [selectedProject, setSelectedProject] = useState(null);
+
+  const navigate = useNavigate();
 
   return (
-    <section className="bg-[#0E0E0E] py-20 md:py-32 relative overflow-hidden">
+
+    <section className="bg-[#0E0E0E] py-20 md:py-32">
+
       {/* Heading */}
       <motion.div
         initial={{ opacity: 0, y: 80 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
         transition={{ duration: 1 }}
-        className="max-w-7xl mx-auto px-6 mb-16 md:mb-24 text-center"
+        className="max-w-7xl mx-auto px-6 mb-20 text-center"
       >
-        <h2 className="text-white text-4xl sm:text-5xl md:text-6xl font-light" style={{ fontFamily: "Playfair Display" }}>
+        <h2 className="text-white text-4xl md:text-5xl font-light">
           Featured Projects
         </h2>
-        <div className="w-24 h-[3px] mx-auto bg-gradient-to-r from-yellow-400 via-yellow-500 to-yellow-600 mt-6 rounded"></div>
+
+        <div className="w-24 h-[3px] mx-auto bg-yellow-500 mt-6"></div>
       </motion.div>
 
-      {/* Projects Grid */}
-      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 md:gap-12">
-        {projects.map((project, index) => (
+
+
+      {/* Grid */}
+      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8 md:gap-10">
+
+        {projectsData.map((project) => (
+
           <motion.div
-            key={index}
-            initial={{ opacity: 0, y: 120 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: index * 0.15, ease: "easeOut" }}
-            className="group relative overflow-hidden rounded-3xl cursor-pointer shadow-lg hover:shadow-2xl transition-shadow duration-500"
-            onClick={() => setSelectedProject(project)}
+            key={project.id}
+            onClick={() => navigate(`/projects/${project.id}`)}
+            className="group relative cursor-pointer overflow-hidden rounded-3xl"
+            whileTap={{ scale: 0.97 }} // mobile tap animation
           >
+
+
+            {/* IMAGE */}
             <motion.img
-              src={project.img}
-              className="w-full h-[300px] sm:h-[350px] md:h-[420px] lg:h-[450px] object-cover rounded-3xl border border-transparent group-hover:border-yellow-400 transition-all duration-500"
-              whileHover={{ scale: 1.08 }}
-              transition={{ duration: 0.8 }}
+              src={project.images[0]}
+              className="
+                w-full
+                h-[320px]
+                sm:h-[380px]
+                md:h-[420px]
+                object-cover
+                transition-all
+                duration-700
+
+                /* Desktop hover */
+                md:group-hover:scale-90
+
+                /* Mobile default zoom-out look */
+                scale-95 md:scale-100
+              "
             />
-            {/* Hover overlay title */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileHover={{ opacity: 1, y: 0 }}
-              className="absolute bottom-5 left-5 bg-black/50 px-4 py-2 rounded-xl backdrop-blur-md"
-            >
-              <h3 className="text-white text-lg sm:text-xl font-semibold">{project.title}</h3>
-              <p className="text-yellow-400 text-sm">{project.category}</p>
-            </motion.div>
+
+
+            {/* OVERLAY */}
+            <div className="
+              absolute inset-0
+
+              /* mobile always dim */
+              bg-black/50
+
+              /* desktop hover dim */
+              md:bg-black/10
+              md:group-hover:bg-black/60
+
+              transition-all duration-500
+            "></div>
+
+
+
+            {/* CENTER TEXT */}
+            <div className="
+              absolute inset-0
+              flex flex-col
+              items-center
+              justify-center
+              text-center
+              px-4
+
+              /* mobile always visible */
+              opacity-100
+
+              /* desktop hover visible */
+              md:opacity-0
+              md:group-hover:opacity-100
+
+              transition-all duration-500
+            ">
+
+              <p className="text-yellow-400 text-sm mb-1">
+                {project.category}
+              </p>
+
+              <h3 className="text-white text-xl md:text-2xl font-semibold">
+                {project.title}
+              </h3>
+
+              <p className="text-white/80 text-sm mt-2">
+                Tap to view full project
+              </p>
+
+            </div>
+
+
           </motion.div>
+
         ))}
+
       </div>
 
-      {/* Modal */}
-      {selectedProject && <ProjectModal project={selectedProject} onClose={() => setSelectedProject(null)} />}
     </section>
+
   );
 }
