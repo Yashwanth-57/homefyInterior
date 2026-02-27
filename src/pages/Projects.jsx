@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import { projectsData } from "../data/ProjectsData";
+import Footer from "../components/Footer";
+
 
 export default function Projects() {
 
@@ -8,9 +10,9 @@ export default function Projects() {
 
   return (
 
-   
-    
-    <section className="bg-gradient-to-b from-[#F8F6F2] to-[#EFEAE3] py-24 md:py-32">
+    <>
+
+    <section className="bg-[#F8F9FA] py-24 md:py-32">
 
       {/* Heading */}
       <motion.div
@@ -90,8 +92,12 @@ export default function Projects() {
 
       </div>
 
-
     </section>
+
+ <Footer />
+    </>
+
+
 
   );
 }

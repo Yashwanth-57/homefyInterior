@@ -50,38 +50,38 @@ export default function EstimateCalculator({ project }) {
   };
 
 
-  //  WhatsApp integration
-const handleWhatsApp = () => {
+  // WhatsApp integration
+  const handleWhatsApp = () => {
 
-  const phone = "7799448384";
+    const phone = "7799448384";
 
-  const projectUrl = `${window.location.origin}/projects/${project.id}`;
+    const projectUrl = `${window.location.origin}/projects/${project.id}`;
 
-  let extrasText = "";
+    let extrasText = "";
 
-  for (let extraName in extras) {
+    for (let extraName in extras) {
 
-    const category = extras[extraName];
+      const category = extras[extraName];
 
-    if (category) {
+      if (category) {
 
-      const extra = project.extras.find(
-        e => e.name === extraName
-      );
+        const extra = project.extras.find(
+          e => e.name === extraName
+        );
 
-      extrasText +=
-        `${extraName} (${category}) - ₹${extra.prices[category]}\n`;
+        extrasText +=
+          `${extraName} (${category}) - ₹${extra.prices[category]}\n`;
+
+      }
 
     }
 
-  }
-
-  const message =
+    const message =
 `Hello, I want estimate for this project:
 
 Project: ${project.title}
 
-Project Link:${projectUrl}
+Project Link: ${projectUrl}
 
 Dimensions:
 Width: ${width} ft
@@ -102,19 +102,31 @@ Final Total: ₹${finalTotal.toLocaleString()}
 Please contact me regarding this estimate.
 `;
 
-  const url =
-    `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
+    const url =
+      `https://wa.me/${phone}?text=${encodeURIComponent(message)}`;
 
-  window.open(url, "_blank");
+    window.open(url, "_blank");
 
-};
+  };
 
 
   return (
 
-    <div className="bg-[#111] p-6 rounded-2xl text-white">
+    <div className="
+      bg-white
+      border border-[#E8DFC8]
+      p-8
+      rounded-2xl
+      shadow-lg
+    ">
 
-      <h3 className="text-2xl font-bold mb-6">
+      {/* Heading */}
+      <h3 className="
+        text-2xl
+        font-playfair
+        text-[#2B2B2B]
+        mb-6
+      ">
         Estimate Calculator
       </h3>
 
@@ -123,27 +135,52 @@ Please contact me regarding this estimate.
       <div className="grid grid-cols-2 gap-4 mb-6">
 
         <div>
-          <label>Width (ft)</label>
+
+          <label className="text-sm text-[#6B645C]">
+            Width (ft)
+          </label>
+
           <input
             type="number"
             value={width}
             onChange={(e) =>
               setWidth(Number(e.target.value))
             }
-            className="w-full mt-2 p-2 bg-black border border-white/20 rounded"
+            className="
+              w-full mt-2 p-3
+              bg-[#F8F6F2]
+              border border-[#E8DFC8]
+              rounded-lg
+              focus:outline-none
+              focus:border-[#C6A75E]
+            "
           />
+
         </div>
 
+
         <div>
-          <label>Height (ft)</label>
+
+          <label className="text-sm text-[#6B645C]">
+            Height (ft)
+          </label>
+
           <input
             type="number"
             value={height}
             onChange={(e) =>
               setHeight(Number(e.target.value))
             }
-            className="w-full mt-2 p-2 bg-black border border-white/20 rounded"
+            className="
+              w-full mt-2 p-3
+              bg-[#F8F6F2]
+              border border-[#E8DFC8]
+              rounded-lg
+              focus:outline-none
+              focus:border-[#C6A75E]
+            "
           />
+
         </div>
 
       </div>
@@ -152,14 +189,23 @@ Please contact me regarding this estimate.
       {/* Package */}
       <div className="mb-6">
 
-        <label>Package</label>
+        <label className="text-sm text-[#6B645C]">
+          Package
+        </label>
 
         <select
           value={packageType}
           onChange={(e) =>
             setPackageType(e.target.value)
           }
-          className="w-full mt-2 p-2 bg-black border border-white/20 rounded"
+          className="
+            w-full mt-2 p-3
+            bg-[#F8F6F2]
+            border border-[#E8DFC8]
+            rounded-lg
+            focus:outline-none
+            focus:border-[#C6A75E]
+          "
         >
 
           <option value="economic">
@@ -182,7 +228,11 @@ Please contact me regarding this estimate.
       {/* Extras */}
       <div className="mb-6">
 
-        <h4 className="font-semibold mb-3">
+        <h4 className="
+          font-semibold
+          text-[#2B2B2B]
+          mb-3
+        ">
           Extras
         </h4>
 
@@ -190,7 +240,9 @@ Please contact me regarding this estimate.
 
           <div key={extra.name} className="mb-3">
 
-            <label>{extra.name}</label>
+            <label className="text-sm text-[#6B645C]">
+              {extra.name}
+            </label>
 
             <select
               onChange={(e) =>
@@ -199,7 +251,14 @@ Please contact me regarding this estimate.
                   e.target.value
                 )
               }
-              className="w-full mt-1 p-2 bg-black border border-white/20 rounded"
+              className="
+                w-full mt-1 p-3
+                bg-[#F8F6F2]
+                border border-[#E8DFC8]
+                rounded-lg
+                focus:outline-none
+                focus:border-[#C6A75E]
+              "
             >
 
               <option value="">None</option>
@@ -226,7 +285,11 @@ Please contact me regarding this estimate.
 
 
       {/* Breakdown */}
-      <div className="border-t border-white/20 pt-4">
+      <div className="
+        border-t border-[#E8DFC8]
+        pt-4
+        text-[#2B2B2B]
+      ">
 
         <p>Area: {area} sq ft</p>
 
@@ -234,7 +297,12 @@ Please contact me regarding this estimate.
 
         <p>Extras: ₹{extrasTotal.toLocaleString()}</p>
 
-        <p className="text-yellow-400 text-xl font-bold mt-2">
+        <p className="
+          text-[#C6A75E]
+          text-xl
+          font-bold
+          mt-2
+        ">
           Total: ₹{finalTotal.toLocaleString()}
         </p>
 
@@ -248,16 +316,18 @@ Please contact me regarding this estimate.
 
         className="
           w-full mt-6
-          bg-green-500
-          hover:bg-green-600
+          bg-[#C6A75E]
+          hover:bg-[#b8964f]
           text-white
-          py-3
+          py-4
           rounded-xl
           font-semibold
           transition
+          shadow-md
         "
       >
         Discuss this estimate on WhatsApp
+
       </button>
 
     </div>

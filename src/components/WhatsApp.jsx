@@ -1,3 +1,5 @@
+import { FaWhatsapp } from "react-icons/fa";
+
 export default function WhatsApp() {
 
   return (
@@ -8,16 +10,20 @@ export default function WhatsApp() {
       rel="noopener noreferrer"
       className="
         fixed bottom-6 right-6 z-[999]
+        w-16 h-16
+        flex items-center justify-center
         bg-green-500
         text-white
-        px-6 py-4
         rounded-full
-        shadow-lg
+        shadow-[0_10px_30px_rgba(0,0,0,0.25)]
         hover:scale-110
-        transition
+        hover:shadow-[0_15px_40px_rgba(0,0,0,0.35)]
+        transition duration-300
       "
     >
-      WhatsApp
+
+      <FaWhatsapp size={30} />
+
     </a>
 
   );

@@ -1,6 +1,5 @@
 import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
-import Stats from "../components/Stats";
 import About from "../components/About";
 import Projects from "../components/Projects";
 import ContactCTA from "../components/ContactCTA";
@@ -10,6 +9,8 @@ import WhatsApp from "../components/WhatsApp";
 import SmoothScroll from "../components/SmoothScroll";
 import PageTransition from "../components/PageTransactions";
 import ScrollToTop from "../components/ScrollToTop";
+import FAQSection from "../components/FAQuestions";
+
 
 export default function Home() {
   return (
@@ -21,7 +22,7 @@ export default function Home() {
         
       <PageTransition>
 
-        <Navbar />
+       
 
         <main>
 
@@ -29,7 +30,7 @@ export default function Home() {
             <Hero />
           </section>
 
-          <Stats />
+        
 
           <section id="about">
             <About />
@@ -45,11 +46,14 @@ export default function Home() {
             <ContactCTA />
           </section>
 
+          <FAQSection />
+
+        
+
         </main>
 
         <Footer />
 
-        <WhatsApp />
 
       </PageTransition>
     </SmoothScroll>
