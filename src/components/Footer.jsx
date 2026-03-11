@@ -75,7 +75,7 @@ export default function Footer() {
             >
               Projects
             </li>
-              <li
+            <li
               onClick={() => navigate("/gallery")}
               className="hover:text-[#C6A75E] cursor-pointer transition"
             >
@@ -110,22 +110,25 @@ export default function Footer() {
 
           <ul className="space-y-3 text-white/60">
 
-            <li className="hover:text-[#C6A75E] transition">
+            <li className="hover:text-[#C6A75E] cursor-pointer transition"
+              onClick={() => navigate("/projects")}>
               Modular Kitchen
             </li>
 
-            <li className="hover:text-[#C6A75E] transition">
+            <li className="hover:text-[#C6A75E] cursor-pointer transition" onClick={() => navigate("/projects")}>
               Living Room Design
             </li>
 
-            <li className="hover:text-[#C6A75E] transition">
+            <li className="hover:text-[#C6A75E] cursor-pointer transition" onClick={() => navigate("/projects")}>
               Bedroom Interiors
             </li>
 
-            <li className="hover:text-[#C6A75E] transition">
+            <li className="hover:text-[#C6A75E] cursor-pointer transition" onClick={() => navigate("/projects")}>
               Full Home Interiors
             </li>
-
+            <li className="hover:text-[#C6A75E] cursor-pointer transition" onClick={() => navigate("/solutions")}
+            >
+              Smart Solutions            </li>
           </ul>
 
         </div>

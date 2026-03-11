@@ -12,22 +12,25 @@ import Projects from "./pages/Projects";
 import Navbar from "./components/Navbar";
 import About from "./pages/AboutUs";
 import Gallery from "./pages/Gallery";
-import GalleryCategory from "./pages/GAllredyCategory";
 import WhatsApp from "./components/WhatsApp";
-
+import Solutions from "./pages/Solutions";
+import SolutionDetail from "./pages/SolutionDetail";
+import GallerySubCategory from "./pages/GalleryCategory";
+import GalleryImages from "./pages/GalleryImages";
+import Feedback from "./pages/Feedback";
 
 function App() {
 
   const [loading, setLoading] = useState(true);
 
   return (
+
     <BrowserRouter>
-    <>
-     <Navbar />
 
-<ScrollToTop />
+      <Navbar />
 
-    <SmoothScroll />
+      <ScrollToTop />
+      
 
       {loading && (
         <Loader onFinish={() => setLoading(false)} />
@@ -35,41 +38,44 @@ function App() {
 
       {!loading && (
 
+        <main >
 
+          <Routes>
 
-        <Routes>
+            <Route path="/" element={<Home />} />
 
-          <Route path="/" element={<Home />} />
+            <Route path="/projects/:id" element={<ProjectDetails />} />
 
-          <Route path="/projects/:id" element={<ProjectDetails />} />
-          
-<Route path="/about" element={<About />} />
+            <Route path="/about" element={<About />} />
 
-<Route path="/gallery" element={<Gallery />} />
+            <Route path="/gallery" element={<Gallery />} />
 
-<Route path="/gallery/:category" element={<GalleryCategory />} />
-          
-<Route path="/consultation" element={<Consultation />} />
+            <Route path="/gallery/:category" element={<GallerySubCategory />} />
 
-<Route path="/projects" element={<Projects />} />
+            <Route path="/gallery/:category/:sub" element={<GalleryImages />} />
 
+            <Route path="/consultation" element={<Consultation />} />
 
+            <Route path="/projects" element={<Projects />} />
 
-        </Routes>
+            <Route path="/solutions" element={<Solutions />} />
 
-        
+            <Route path="/solutions/:slug" element={<SolutionDetail />} />
 
-       
+            <Route path="/feedback" element={<Feedback />} />
+
+          </Routes>
+
+        </main>
 
       )}
+
       <WhatsApp />
-        
-      </>
 
     </BrowserRouter>
 
-    
   );
+
 }
 
 export default App;

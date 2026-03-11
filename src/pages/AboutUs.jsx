@@ -1,14 +1,21 @@
 import { motion } from "framer-motion";
 import Footer from "../components/Footer";
+import LuxuryPageHero from "../components/LuxuryPageHero";
+import ScrollProgressBar from "../components/ScrollProgress";
 
 export default function About() {
 
   return (
+    
 
     <div className="bg-[var(--bg-main)] min-h-screen">
-
+<ScrollProgressBar />
       
-
+<LuxuryPageHero
+  title="Studio At HomeCraft"
+  subtitle="Design Philosophy"
+  image="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=1920"
+/>
       {/* HERO */}
       <section className="pt-32 pb-20 px-6">
 

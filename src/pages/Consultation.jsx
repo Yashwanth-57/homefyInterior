@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
 import Footer from "../components/Footer";
+import LuxuryPageHero from "../components/LuxuryPageHero";
+import ScrollProgressBar from "../components/ScrollProgress";
 
 export default function Consultation() {
 
@@ -29,6 +31,13 @@ export default function Consultation() {
   return (
 
     <>
+    <ScrollProgressBar />
+     {/* HERO SECTION */}
+      <LuxuryPageHero
+        title="Consultant HomeCraft"
+        subtitle="DESIGN EXPERTS"
+        image="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1920"
+      />
     <section
       id="consultation"
       className="

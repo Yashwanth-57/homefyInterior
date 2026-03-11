@@ -229,3 +229,17 @@ h1, h2, h3, h4, h5 {
   background: var(--bg-card);
 
 }
+.navbar-luxury-bg {
+
+  background: linear-gradient(
+    135deg,
+    rgba(247,243,237,0.95),
+    rgba(241,236,228,0.92),
+    rgba(239,232,221,0.95)
+  );
+
+  backdrop-filter: blur(14px);
+
+  border-bottom: 1px solid #E5DFD6;
+
+}

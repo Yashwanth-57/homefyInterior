@@ -10,6 +10,8 @@ import SmoothScroll from "../components/SmoothScroll";
 import PageTransition from "../components/PageTransactions";
 import ScrollToTop from "../components/ScrollToTop";
 import FAQSection from "../components/FAQuestions";
+import HeroAnnouncement from "../components/HomeAnnoncemnet";
+import ScrollProgressBar from "../components/ScrollProgress";
 
 
 export default function Home() {
@@ -18,17 +20,26 @@ export default function Home() {
     
     <SmoothScroll>
 
-        <ScrollToTop />
         
+        <ScrollProgressBar />
       <PageTransition>
 
-       
+        <HeroAnnouncement />
 
         <main>
+          
+
+           
+
+        
 
           <section id="home">
+            
             <Hero />
+            
           </section>
+        
+          
 
         
 

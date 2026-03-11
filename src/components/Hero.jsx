@@ -228,9 +228,10 @@
 //   );
 
 // }
-
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
+import HeroAnnouncement from "./HomeAnnoncemnet";
+import ServiceUniverse from "./InfiniteServicesScroll";
 
 export default function PremiumHero() {
 
@@ -238,7 +239,7 @@ export default function PremiumHero() {
 
   return (
 
-    <section className="relative h-screen w-full flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-screen w-full flex items-center justify-center overflow-hidden px-4">
 
       {/* BACKGROUND IMAGE */}
       <motion.img
@@ -253,29 +254,16 @@ export default function PremiumHero() {
       <div className="absolute inset-0 bg-[#0f0f0f]/20" />
 
       {/* LUXURY GOLD CENTER LIGHT */}
-      <div className="
-        absolute inset-0
-        bg-[radial-gradient(circle_at_center,rgba(212,175,55,0.18),transparent_65%)]
-      " />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(212,175,55,0.18),transparent_65%)]" />
 
       {/* EDGE DEPTH VIGNETTE */}
-      <div className="
-        absolute inset-0
-        bg-[radial-gradient(circle,transparent_40%,rgba(15,15,15,0.55)_100%)]
-      " />
+      <div className="absolute inset-0 bg-[radial-gradient(circle,transparent_40%,rgba(15,15,15,0.55)_100%)]" />
 
       {/* SOFT TOP LIGHT */}
-      <div className="
-        absolute inset-0
-        bg-gradient-to-b
-        from-white/5
-        via-transparent
-        to-transparent
-      " />
+      <div className="absolute inset-0 bg-gradient-to-b from-white/5 via-transparent to-transparent" />
 
       {/* CONTENT */}
-      <div className="relative z-10 text-center px-6 max-w-5xl">
-
+      <div className="relative z-10 text-center mb-10 md:mb-24 max-w-[95%] sm:max-w-2xl md:max-w-4xl lg:max-w-5xl mx-auto">
         {/* SMALL LABEL */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -283,9 +271,9 @@ export default function PremiumHero() {
           transition={{ duration: 1 }}
           className="
             text-[#D4AF37]
-            tracking-[0.5em]
-            text-sm
-            mb-6
+            tracking-[0.35em] md:tracking-[0.5em]
+            text-xs sm:text-sm
+            mb-4 md:mb-6
             font-light
           "
         >
@@ -299,9 +287,11 @@ export default function PremiumHero() {
           transition={{ duration: 1.2 }}
           className="
             text-white
-            text-[60px]
-            md:text-[95px]
-            leading-[1.05]
+            text-[32px]
+            sm:text-[42px]
+            md:text-[60px]
+            lg:text-[95px]
+            leading-[1.1]
             font-playfair
           "
         >
@@ -310,64 +300,153 @@ export default function PremiumHero() {
           Luxury Spaces
         </motion.h1>
 
-        {/* DESCRIPTION */}
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.4 }}
-          className="
-            text-white/80
-            mt-8
-            text-lg
-            max-w-xl
-            mx-auto
-            font-light
-          "
-        >
-          Where elegance meets precision. We design interiors that elevate lifestyle and redefine luxury living.
-        </motion.p>
+{/* DESCRIPTION */}
+<motion.p
+  initial={{ opacity: 0 }}
+  animate={{ opacity: 1 }}
+  transition={{ delay: 0.4 }}
+  className="
+    text-white/80
+    mt-5 sm:mt-6 md:mt-8
+    text-xs sm:text-sm md:text-base lg:text-lg
+    leading-relaxed
+    max-w-[90%] sm:max-w-lg md:max-w-xl
+    mx-auto
+    font-light
+    px-4 sm:px-2
+  "
+>
+  Where elegance meets precision. We design interiors that elevate lifestyle and redefine luxury living.
+</motion.p>
 
         {/* BUTTONS */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.7 }}
-          className="flex justify-center gap-6 mt-12 flex-wrap"
+          className="
+            flex
+            flex-col sm:flex-row
+            items-center
+            justify-center
+            gap-4 md:gap-6
+            mt-8 md:mt-12
+            flex-wrap
+          "
         >
 
-          {/* GOLD BUTTON */}
+          {/* SIMPLE PROJECT BUTTON */}
           <button
             onClick={() => navigate("/projects")}
             className="
-              px-12 py-4
-              bg-[#D4AF37]
-              text-black
-              hover:scale-105
-              transition-all duration-300
-              shadow-[0_10px_40px_rgba(212,175,55,0.35)]
-              hover:shadow-[0_20px_60px_rgba(212,175,55,0.5)]
+              px-6 sm:px-8 md:px-10
+              py-3 md:py-4
+              text-sm md:text-base
+              border border-white/40
+              text-white
+              backdrop-blur-md
+              hover:bg-white
+              hover:text-black
+              transition
             "
           >
             View Projects
           </button>
 
-          {/* GLASS BUTTON */}
+          {/* CONSULTATION BUTTON */}
           <button
             onClick={() => navigate("/consultation")}
             className="
-              px-12 py-4
+              relative
+              px-8 sm:px-10 md:px-14
+              py-3 md:py-4
               text-white
-              border border-white/30
-              backdrop-blur-md
-              hover:bg-white
-              hover:text-black
+              font-semibold
+              text-sm sm:text-base md:text-lg
+              rounded-full
+              overflow-hidden
+              bg-gradient-to-r from-red-600 via-pink-600 to-orange-500
+              shadow-[0_0_30px_rgba(255,0,0,0.6)]
               transition-all duration-300
+              hover:scale-105
+              hover:shadow-[0_0_60px_rgba(255,0,0,0.9)]
+              before:absolute
+              before:top-0
+              before:left-[-100%]
+              before:w-full
+              before:h-full
+              before:bg-white/20
+              before:skew-x-12
+              before:transition-all
+              before:duration-700
+              hover:before:left-[120%]
             "
           >
             Book Consultation
           </button>
 
+          {/* SAR SOLUTIONS */}
+          <button
+            onClick={() => navigate("/solutions")}
+            className="
+              relative
+              text-white
+              font-semibold
+              text-sm sm:text-base md:text-lg
+              rounded-xl
+              bg-black
+              overflow-hidden
+              group
+            "
+          >
+
+            {/* moving gradient border */}
+            <span
+              className="
+                absolute
+                inset-0
+                rounded-xl
+                p-[2px]
+                bg-gradient-to-r
+                from-red-500
+                via-yellow-400
+                to-red-500
+                animate-[spin_4s_linear_infinite]
+              "
+            ></span>
+
+            {/* button content */}
+            <span
+              className="
+                relative
+                block
+                rounded-xl
+                bg-black
+                px-8 sm:px-10 md:px-14
+                py-3 md:py-4
+                z-10
+                shadow-[0_0_25px_rgba(255,0,0,0.6)]
+                animate-pulse
+                group-hover:scale-110
+                transition
+              "
+            >
+              SAR Solutions
+            </span>
+
+          </button>
+
+          <br />
+
+       
+
         </motion.div>
+
+      
+
+<div className="mt-6 md:mt-10">
+  <ServiceUniverse />
+</div>
 
       </div>
 

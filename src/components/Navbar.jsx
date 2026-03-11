@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
+import HeroAnnouncement from "./HomeAnnoncemnet";
 
 export default function Navbar() {
 
@@ -23,25 +24,30 @@ export default function Navbar() {
   }, []);
 
 
-  const navItems = [
-    { name: "Home", path: "/" },
-    { name: "About", path: "/about" },
-    { name: "Gallery", path: "/gallery"},
-    { name: "Projects", path: "/projects" },
-    { name: "Consultation", path: "/consultation" },
-    
-  ];
+const navItems = [
+  { name: "Home", path: "/" },
+  { name: "About", path: "/about" },
+  { name: "Gallery", path: "/gallery"},
+  { name: "Projects", path: "/projects" },
+  { name: "Feeback", path: "/feedback"},
+
+  { name: "Smart Solutions", path: "/solutions", special: true },
+
+  { name: "Consultation", path: "/consultation" },
+];
 
 
   return (
+    
 
     <motion.nav
       initial={{ y: -80, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
 
       className={`
-        fixed top-0 left-0 w-full z-50
-        transition-all duration-500
+       fixed top-0 left-0 w-full z-50
+transition-all duration-500
+navbar-luxury-bg
 
         ${
           scrolled
@@ -75,25 +81,56 @@ export default function Navbar() {
 
           {navItems.map((item, index) => (
 
-            <button
-              key={index}
-              onClick={() => navigate(item.path)}
+  <motion.button
+  key={index}
+  onClick={() => navigate(item.path)}
+  className={`
+    font-medium flex gap-[1px]
 
-              className={`
-                transition
-                font-medium
+    ${
+      !item.special
+        ? location.pathname === item.path
+          ? "text-[#C6A75E]"
+          : "text-[#3E3E3E] hover:text-black"
+        : ""
+    }
+  `}
+>
+  {item.special
+    ? item.name.split("").map((letter, i) => (
+        <motion.span
+          key={i}
+          animate={{
+            color: [
+              "#ff4d4d",
+              "#facc15",
+              "#22c55e",
+              "#38bdf8",
+              "#a855f7",
+              "#ff4d4d"
+            ],
+            scale: [1, 1.15, 1]
+          }}
+          transition={{
+            duration: 3 + i * 0.3,
+            repeat: Infinity,
+            ease: "easeInOut"
+          }}
+          className={`
+            ${
+              i % 3 === 0
+                ? "font-bold"
+                : "font-medium"
+            }
+          `}
+        >
+          {letter}
+        </motion.span>
+      ))
+    : item.name}
+</motion.button>
 
-                ${
-                  location.pathname === item.path
-                    ? "text-[#C6A75E]"
-                    : "text-[#3E3E3E] hover:text-[#C6A75E]"
-                }
-              `}
-            >
-              {item.name}
-            </button>
-
-          ))}
+))}
 
         </div>
 
@@ -153,6 +190,7 @@ export default function Navbar() {
 
             ))}
 
+
           </div>
 
         </motion.div>
@@ -160,6 +198,7 @@ export default function Navbar() {
       )}
 
     </motion.nav>
+    
 
   );
 
