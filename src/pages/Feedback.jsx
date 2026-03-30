@@ -125,90 +125,117 @@
 //     </section>
 //   );
 // }
-import { useState } from "react";
 import { motion } from "framer-motion";
+import { useState } from "react";
+import emailjs from "emailjs-com";
 
 export default function Reviews() {
 
-  const [reviews, setReviews] = useState([
-    { name: "Arjun Reddy", text: "Amazing luxury design and execution." },
-    { name: "Priya Sharma", text: "Professional and elegant interiors." },
-    { name: "Rahul Mehta", text: "Our home now feels like a premium villa." }
-  ]);
+  const [name, setName] = useState("");
+  const [message, setMessage] = useState("");
 
-  const [showForm, setShowForm] = useState(false);
-
-  const [form, setForm] = useState({
-    name: "",
-    message: ""
-  });
-
-  const submitFeedback = (e) => {
+  const handleSend = (e) => {
     e.preventDefault();
 
-    if (!form.name || !form.message) return;
+  if (!name || !message) {
+    alert("Please fill all fields");
+    return;
+  }
 
-    setReviews([{ name: form.name, text: form.message }, ...reviews]);
+  const text = `Hi, this is ${name}. ${message}`;
+  const url = `https://wa.me/917799448384?text=${encodeURIComponent(text)}`;
 
-    setForm({ name: "", message: "" });
-
-    setShowForm(false);
+  window.open(url, "_blank");
   };
 
+const reviews = [
+  {
+    name: "Arjun Reddy",
+    role: "3BHK Interior Design",
+    rating: 5,
+    text: "I had a great experience working with HomeCraft for my 3BHK interior design. From the beginning, their team understood our requirements clearly and provided very creative ideas. The execution was smooth and well-managed without any delays. The quality of materials and finishing work is truly impressive. Every room now looks modern, elegant, and comfortable. Their attention to detail really made a big difference in the final outcome. I would definitely recommend them for premium interior work."
+  },
+  {
+    name: "Priya Sharma",
+    role: "2BHK Modular Interior",
+    rating: 4.5,
+    text: "Choosing HomeCraft for our 2BHK modular interior was the right decision. The team was very professional and guided us properly throughout the project. They provided designs that were both stylish and practical for daily use. The modular kitchen and storage solutions are very well planned. The project was completed on time without any hassle. The finishing quality and overall look exceeded our expectations. We are very happy with the results and would highly recommend them."
+  },
+  {
+    name: "Rahul Mehta",
+    role: "Villa Interior & Exterior",
+    rating: 5,
+    text: "We hired HomeCraft for our villa interior and exterior design, and the results are amazing. The team delivered a very premium and unique design for the entire space. The exterior elevation looks elegant and gives a strong first impression. Inside, every area is designed with proper planning and attention to detail. They maintained good communication and professionalism throughout the project. The quality of work and finishing is excellent. Overall, it was a smooth and satisfying experience working with them."
+  }
+];
+
   return (
+    <div className="w-full  text-black">
 
-    <div className="w-full">
-
-      {/* TOP HERO IMAGE (30%) */}
-      <section className="relative h-[60vh] w-full overflow-hidden">
-
+      {/* HERO */}
+      <section className="relative h-[55vh] w-full">
         <img
-        src ="https://res.cloudinary.com/ddashlgli/image/upload/v1773103040/WhatsApp_Image_2026-03-07_at_21.54.57_1_ygo2qy.jpg"
+          src="https://res.cloudinary.com/ddashlgli/image/upload/v1773103040/WhatsApp_Image_2026-03-07_at_21.54.57_1_ygo2qy.jpg"
           className="absolute inset-0 w-full h-full object-cover"
         />
-
-        <div className="absolute inset-0 bg-black/40" />
+        <div className="absolute inset-0 bg-black/60" />
 
         <div className="relative h-full flex items-center justify-center text-center px-4">
-
           <div>
-
-            <p className="text-[#D4AF37] tracking-[0.4em] text-xs mb-3">
-              CLIENT REVIEWS
+            <p className="text-yellow-400 tracking-[0.4em] text-xs mb-3">
+              TESTIMONIALS
             </p>
-
-            <h1 className="text-white text-3xl md:text-5xl font-playfair">
-              What Clients Say
-              <br/>
-              @HomeCraft
+            <h1 className="text-4xl md:text-6xl font-boldn text-white">
+              What Our Clients Say
             </h1>
-
           </div>
-
         </div>
-
       </section>
 
-      {/* REVIEWS SECTION */}
-      <section className="max-w-6xl mx-auto px-6 py-16">
+      {/* BIG CARDS */}
+      <section className="max-w-6xl mx-auto px-6 py-24 text-black ">
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-1 gap-6 rounded-3xl border border-gray-200 hover:border-purple-400 shadow-sm hover:shadow-lg transition">
 
           {reviews.map((review, index) => (
 
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 60 }}
               whileInView={{ opacity: 1, y: 0 }}
-              className="luxury-card p-6"
+              whileHover={{ scale: 1.02 }}
+              className="p-10 rounded-3xl border border-white/10"
             >
 
-              <p className="text-[var(--text-secondary)] italic mb-4">
-                "{review.text}"
-              </p>
+              {/* TOP */}
+              <div className="flex items-center gap-5 mb-6">
 
-              <p className="text-gold font-semibold">
-                — {review.name}
+                {/* AVATAR */}
+                <div className="w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold rounded-3xl border border-gray-200 hover:border-purple-400 shadow-sm hover:shadow-lg transition">
+                  {review.name.charAt(0)}
+                </div>
+
+                <div>
+                  <p className="text-2xl font-semibold">
+                    {review.name}
+                  </p>
+                  <p className="text-gray-400">
+                    {review.role}
+                  </p>
+                </div>
+
+              </div>
+
+              {/* RATING */}
+              <div className="flex mb-4">
+                {Array.from({ length: review.rating }).map((_, i) => (
+                  <span key={i} className="text-yellow-400 text-xl">★</span>
+                ))}
+              </div>
+
+              {/* TEXT */}
+              <p className="text-lg text-black-300 leading-relaxed max-w-3xl">
+                "{review.text}"
               </p>
 
             </motion.div>
@@ -217,66 +244,46 @@ export default function Reviews() {
 
         </div>
 
-        {/* ADD FEEDBACK BUTTON */}
-        <div className="text-center mt-16">
+      </section>
 
-          <button
-            onClick={() => setShowForm(true)}
-            className="luxury-btn"
-          >
-            Add Your Feedback
-          </button>
+      {/* 🔥 ADDED FORM (NO CHANGE ABOVE) */}
+      <section className="max-w-3xl mx-auto px-6 pb-24">
+
+        <div className="p-8 rounded-3xl border border-gray-200 shadow-sm">
+
+          <h2 className="text-3xl font-semibold mb-6 text-center">
+            Share Your Experience
+          </h2>
+
+          <form onSubmit={handleSend} className="flex flex-col gap-4">
+
+            <input
+              type="text"
+              placeholder="Your Name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              className="p-4 rounded-lg border border-gray-300 outline-none focus:border-purple-500"
+            />
+
+            <textarea
+              placeholder="Write your experience..."
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+              className="p-4 rounded-lg border border-gray-300 outline-none h-32 focus:border-purple-500"
+            />
+
+            <button
+              type="submit"
+              className="py-4 rounded-lg bg-black text-white font-semibold hover:opacity-80 transition"
+            >
+              Submit
+            </button>
+
+          </form>
 
         </div>
 
       </section>
-
-      {/* FEEDBACK FORM */}
-      {showForm && (
-
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-
-          <div className="bg-card p-10 rounded-xl max-w-md w-full">
-
-            <h2 className="text-2xl mb-6 text-center">
-              Share Your Experience
-            </h2>
-
-            <form onSubmit={submitFeedback} className="space-y-4">
-
-              <input
-                type="text"
-                placeholder="Your Name"
-                value={form.name}
-                onChange={(e) =>
-                  setForm({ ...form, name: e.target.value })
-                }
-                className="luxury-input"
-              />
-
-              <textarea
-                placeholder="Your Feedback"
-                value={form.message}
-                onChange={(e) =>
-                  setForm({ ...form, message: e.target.value })
-                }
-                className="luxury-input"
-              />
-
-              <button
-                type="submit"
-                className="luxury-btn w-full"
-              >
-                Submit
-              </button>
-
-            </form>
-
-          </div>
-
-        </div>
-
-      )}
 
     </div>
   );

@@ -119,19 +119,19 @@ export default function About() {
           <div className="grid md:grid-cols-3 gap-10">
 
             <TeamCard
-              img="https://randomuser.me/api/portraits/women/44.jpg"
-              name="Ananya Sharma"
+             // img="https://randomuser.me/api/portraits/women/44.jpg"
+              name="Ajay"
               role="Senior Interior Designer"
             />
 
             <TeamCard
-              img="https://randomuser.me/api/portraits/men/32.jpg"
+            //  img="https://randomuser.me/api/portraits/men/32.jpg"
               name="Rahul Verma"
               role="Architect"
             />
 
             <TeamCard
-              img="https://randomuser.me/api/portraits/women/68.jpg"
+            //  img="https://randomuser.me/api/portraits/women/68.jpg"
               name="Meera Kapoor"
               role="Creative Director"
             />
@@ -173,14 +173,17 @@ function Stat({ number, label }) {
 
 
 function TeamCard({ img, name, role }) {
-
   return (
-    <div className="bg-white rounded-xl shadow-md p-6 text-center">
+    <div className="bg-white rounded-xl shadow-md p-6 text-center hover:shadow-xl transition-all duration-500">
 
-      <img
-        src={img}
-        className="w-28 h-28 rounded-full mx-auto mb-4"
-      />
+      {/* DEFAULT AVATAR (NO IMAGE) */}
+      <div className="w-28 h-28 rounded-full mx-auto mb-4 flex items-center justify-center
+        text-3xl font-semibold text-white
+        bg-gradient-to-r from-[#7f5af0] to-[#ff6ec4]
+        hover:scale-110 transition-all duration-500"
+      >
+        {name?.charAt(0)}
+      </div>
 
       <h3 className="text-xl font-medium">
         {name}

@@ -243,3 +243,7 @@ h1, h2, h3, h4, h5 {
   border-bottom: 1px solid #E5DFD6;
 
 }
+
+section {
+  will-change: transform, opacity;
+}

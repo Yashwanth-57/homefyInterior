@@ -23,7 +23,7 @@ export default function Consultation() {
       `Message: ${message}`;
 
     window.open(
-      `https://wa.me/919876543210?text=${whatsappMessage}`,
+      `https://wa.me/917799448384?text=${whatsappMessage}`,
       "_blank"
     );
   };

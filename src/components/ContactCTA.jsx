@@ -50,7 +50,7 @@ export default function ProcessCTA() {
 
   return (
 
-    <section className="py-32 bg-gradient-to-b from-[#F8F6F2] to-[#EFEAE3] overflow-hidden">
+    <section className="py-32  overflow-hidden">
 
 
       {/* Heading */}

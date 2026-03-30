@@ -14,7 +14,7 @@ export default function Footer() {
 
   return (
 
-    <footer className="bg-[#0A0A0A] text-white pt-20 pb-10 px-6">
+    <footer className="bg-black text-white pt-20 pb-10 px-6">
 
       <div className="max-w-7xl mx-auto grid md:grid-cols-4 gap-12">
 

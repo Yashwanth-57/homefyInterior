@@ -228,18 +228,81 @@
 //   );
 
 // }
+"use client";
+
+"use client";
+
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
-import HeroAnnouncement from "./HomeAnnoncemnet";
 import ServiceUniverse from "./InfiniteServicesScroll";
+import { useEffect, useRef, useState } from "react";
+import Typed from "typed.js";
 
-export default function PremiumHero() {
+/* =========================
+   IMAGE SLIDER
+========================= */
+function ImageSlider({ images }) {
+  const [index, setIndex] = useState(0);
 
-  const navigate = useNavigate();
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setIndex((prev) => (prev + 1) % images.length);
+    }, 2500);
+    return () => clearInterval(interval);
+  }, [images.length]);
 
   return (
+    <div className="absolute inset-0">
+      {images.map((img, i) => (
+        <img
+          key={i}
+          src={img}
+          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ${
+            i === index ? "opacity-100" : "opacity-0"
+          }`}
+        />
+      ))}
+    </div>
+  );
+}
 
-    <section className="relative min-h-screen w-full flex items-center justify-center overflow-hidden px-4">
+export default function PremiumHero() {
+  const navigate = useNavigate();
+
+  /* =========================
+     TYPING EFFECT
+  ========================= */
+  const el = useRef(null);
+
+  useEffect(() => {
+    const typed = new Typed(el.current, {
+      strings: [
+        "Where elegance meets precision.",
+        "We design interiors that elevate lifestyle.",
+        "Luxury that defines your living."
+      ],
+      typeSpeed: 40,
+      backSpeed: 20,
+      loop: true,
+    });
+
+    return () => typed.destroy();
+  }, []);
+
+  const interiorImages = [
+    "https://res.cloudinary.com/ddashlgli/image/upload/v1773103060/WhatsApp_Image_2026-03-07_at_21.55.10_1_mvheca.jpg",
+    "https://res.cloudinary.com/ddashlgli/image/upload/v1773103049/WhatsApp_Image_2026-03-07_at_21.55.12_2_agefcs.jpg",
+    "https://res.cloudinary.com/ddashlgli/image/upload/v1773103022/WhatsApp_Image_2026-03-07_at_21.55.03_rmwfgv.jpg",
+  ];
+
+  const exteriorImages = [
+    "https://res.cloudinary.com/ddashlgli/image/upload/v1774810365/WhatsApp_Image_2026-03-30_at_00.20.06_1_npcgx6.jpg",
+    "https://res.cloudinary.com/ddashlgli/image/upload/v1774810365/WhatsApp_Image_2026-03-30_at_00.20.03_tchsi7.jpg",
+    "https://res.cloudinary.com/ddashlgli/image/upload/v1774810364/WhatsApp_Image_2026-03-30_at_00.20.06_vxjgxu.jpg",
+  ];
+
+  return (
+    <section className="relative w-full flex flex-col items-start justify-start pt-24 pb-12 min-h-[100dvh]">
 
       {/* BACKGROUND IMAGE */}
       <motion.img
@@ -247,37 +310,31 @@ export default function PremiumHero() {
         initial={{ scale: 1.12 }}
         animate={{ scale: 1 }}
         transition={{ duration: 2.5, ease: "easeOut" }}
-        className="absolute inset-0 w-full h-full object-cover"
+        className="absolute inset-0 w-full h-full object-cover z-0 opacity = 10"
       />
 
-      {/* ATMOSPHERE BASE */}
-      <div className="absolute inset-0 bg-[#0f0f0f]/20" />
-
-      {/* LUXURY GOLD CENTER LIGHT */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(212,175,55,0.18),transparent_65%)]" />
-
-      {/* EDGE DEPTH VIGNETTE */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle,transparent_40%,rgba(15,15,15,0.55)_100%)]" />
-
-      {/* SOFT TOP LIGHT */}
-      <div className="absolute inset-0 bg-gradient-to-b from-white/5 via-transparent to-transparent" />
+      {/* OVERLAY */}
+      <div className="absolute inset-0 bg-[#0f0f0f]/70 backdrop-blur-[1.3px] z-0" />
 
       {/* CONTENT */}
       <div className="relative z-10 text-center mb-10 md:mb-24 max-w-[95%] sm:max-w-2xl md:max-w-4xl lg:max-w-5xl mx-auto">
+
         {/* SMALL LABEL */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
-          className="
-            text-[#D4AF37]
-            tracking-[0.35em] md:tracking-[0.5em]
-            text-xs sm:text-sm
-            mb-4 md:mb-6
-            font-light
-          "
+          className="w-full text-center font-bold uppercase text-lg sm:text-xl md:text-2xl tracking-widest mb-8 -mt-10"
         >
-          LUXURY INTERIOR DESIGN STUDIO
+          {"@HomeCraft Interiors".split("").map((letter, idx) => (
+            <span
+              key={idx}
+              style={{ color: ["#ff6ec4", "#7873f5", "#42e695", "#f9d423", "#ff4e50", "#1fddff"][idx % 6] }}
+              className="inline-block"
+            >
+              {letter}
+            </span>
+          ))}
         </motion.div>
 
         {/* MAIN HEADING */}
@@ -285,173 +342,84 @@ export default function PremiumHero() {
           initial={{ opacity: 0, y: 60 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.2 }}
-          className="
-            text-white
-            text-[32px]
-            sm:text-[42px]
-            md:text-[60px]
-            lg:text-[95px]
-            leading-[1.1]
-            font-playfair
-          "
+          className="text-[32px] sm:text-[42px] md:text-[60px] lg:text-[95px] leading-[1.1] font-playfair text-white"
         >
           Crafting Timeless
           <br />
           Luxury Spaces
         </motion.h1>
 
-{/* DESCRIPTION */}
-<motion.p
-  initial={{ opacity: 0 }}
-  animate={{ opacity: 1 }}
-  transition={{ delay: 0.4 }}
-  className="
-    text-white/80
-    mt-5 sm:mt-6 md:mt-8
-    text-xs sm:text-sm md:text-base lg:text-lg
-    leading-relaxed
-    max-w-[90%] sm:max-w-lg md:max-w-xl
-    mx-auto
-    font-light
-    px-4 sm:px-2
-  "
->
-  Where elegance meets precision. We design interiors that elevate lifestyle and redefine luxury living.
-</motion.p>
+        {/* TYPING DESCRIPTION */}
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.4 }}
+          className="mt-5 sm:mt-6 md:mt-8 text-xs sm:text-sm md:text-base lg:text-lg leading-relaxed max-w-[90%] sm:max-w-lg md:max-w-xl mx-auto font-light px-4 sm:px-2 text-white"
+        >
+          <span ref={el} />
+        </motion.p>
 
         {/* BUTTONS */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.7 }}
-          className="
-            flex
-            flex-col sm:flex-row
-            items-center
-            justify-center
-            gap-4 md:gap-6
-            mt-8 md:mt-12
-            flex-wrap
-          "
+          className="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-6 mt-8 md:mt-12"
         >
-
-          {/* SIMPLE PROJECT BUTTON */}
           <button
             onClick={() => navigate("/projects")}
-            className="
-              px-6 sm:px-8 md:px-10
-              py-3 md:py-4
-              text-sm md:text-base
-              border border-white/40
-              text-white
-              backdrop-blur-md
-              hover:bg-white
-              hover:text-black
-              transition
-            "
+            className="px-8 md:px-12 py-3 md:py-4 text-sm md:text-base rounded-full text-white font-semibold bg-[#7f5af0] hover:bg-[#6246ea] transition-all duration-500 hover:scale-105 shadow-[0_10px_25px_rgba(127,90,240,0.4)] hover:shadow-[0_15px_40px_rgba(98,70,234,0.6)]"
           >
             View Projects
           </button>
 
-          {/* CONSULTATION BUTTON */}
           <button
             onClick={() => navigate("/consultation")}
-            className="
-              relative
-              px-8 sm:px-10 md:px-14
-              py-3 md:py-4
-              text-white
-              font-semibold
-              text-sm sm:text-base md:text-lg
-              rounded-full
-              overflow-hidden
-              bg-gradient-to-r from-red-600 via-pink-600 to-orange-500
-              shadow-[0_0_30px_rgba(255,0,0,0.6)]
-              transition-all duration-300
-              hover:scale-105
-              hover:shadow-[0_0_60px_rgba(255,0,0,0.9)]
-              before:absolute
-              before:top-0
-              before:left-[-100%]
-              before:w-full
-              before:h-full
-              before:bg-white/20
-              before:skew-x-12
-              before:transition-all
-              before:duration-700
-              hover:before:left-[120%]
-            "
+            className="px-8 md:px-12 py-3 md:py-4 text-sm md:text-base rounded-full text-white font-semibold bg-[#e63946] hover:bg-[#c1121f] transition-all duration-500 hover:scale-105 shadow-[0_10px_25px_rgba(230,57,70,0.4)] hover:shadow-[0_15px_40px_rgba(193,18,31,0.6)]"
           >
             Book Consultation
           </button>
-
-          {/* SAR SOLUTIONS */}
-          <button
-            onClick={() => navigate("/solutions")}
-            className="
-              relative
-              text-white
-              font-semibold
-              text-sm sm:text-base md:text-lg
-              rounded-xl
-              bg-black
-              overflow-hidden
-              group
-            "
-          >
-
-            {/* moving gradient border */}
-            <span
-              className="
-                absolute
-                inset-0
-                rounded-xl
-                p-[2px]
-                bg-gradient-to-r
-                from-red-500
-                via-yellow-400
-                to-red-500
-                animate-[spin_4s_linear_infinite]
-              "
-            ></span>
-
-            {/* button content */}
-            <span
-              className="
-                relative
-                block
-                rounded-xl
-                bg-black
-                px-8 sm:px-10 md:px-14
-                py-3 md:py-4
-                z-10
-                shadow-[0_0_25px_rgba(255,0,0,0.6)]
-                animate-pulse
-                group-hover:scale-110
-                transition
-              "
-            >
-              SAR Solutions
-            </span>
-
-          </button>
-
-          <br />
-
-       
-
         </motion.div>
+   {/* SERVICE UNIVERSE */}
+        <div className="m-8 md:mt-10">
+          <ServiceUniverse />
+        </div>
+        {/* ===== NEW SECTION (ADDED) ===== */}
+        <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6 px-4">
 
-      
+          {/* INTERIOR */}
+          <div
+            onClick={() => navigate("/interior")}
+            className="relative h-[220px] md:h-[300px] rounded-2xl overflow-hidden cursor-pointer group"
+          >
+            <ImageSlider images={interiorImages} />
+            <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition duration-500" />
+            <div className="absolute bottom-4 left-4 text-white text-lg md:text-xl font-semibold">
+              Interior Design View
+              
+            </div>
+            <div className="absolute inset-0 border border-white/30 rounded-2xl group-hover:border-white transition duration-500"></div>
+          </div>
 
-<div className="mt-6 md:mt-10">
-  <ServiceUniverse />
-</div>
+          {/* EXTERIOR */}
+          <div
+            onClick={() => navigate("/exterior")}
+            className="relative h-[220px] md:h-[300px] rounded-2xl overflow-hidden cursor-pointer group"
+          >
+            <ImageSlider images={exteriorImages} />
+            <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition duration-500" />
+            <div className="absolute bottom-4 left-4 text-white text-lg md:text-xl font-semibold">
+              Exterior Design View
+           
+            </div>
+            <div className="absolute inset-0 border border-white/30 rounded-2xl group-hover:border-white transition duration-500"></div>
+          </div>
+
+        </div>
+
+     
 
       </div>
-
     </section>
-
   );
-
 }
