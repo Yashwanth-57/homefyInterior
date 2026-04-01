@@ -4,13 +4,13 @@ export const solutions = [
     slug: "smart-door-locks",
     title: "Smart Door Locks",
     description: "Smart door locks bring advanced security and convenience to modern homes. With technologies like fingerprint authentication, face recognition, RFID cards, and mobile app control, these locks eliminate the need for traditional keys while providing enhanced protection. They allow homeowners to manage access, monitor entry, and automate locking for improved safety and peace of mind.",
-    cover: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c",
+    cover: "https://res.cloudinary.com/ddashlgli/image/upload/v1775041194/download_vztx6a.jpg",
 
     models: [
 
       {
         name: "Fingerprint Pro Lock",
-        image: "https://images.unsplash.com/photo-1604014237800-1c9102c219da",
+        image: "https://res.cloudinary.com/ddashlgli/image/upload/v1775041905/Sleek_Smart_Door_Lock_on_Black_Background_m7l0b8.jpg",
 
         features: [
           "Fingerprint unlock",
@@ -29,7 +29,7 @@ export const solutions = [
 
       {
         name: "Face Recognition Lock",
-        image: "https://images.unsplash.com/photo-1582582429416-1e3a7e7b8c3c",
+        image: "https://res.cloudinary.com/ddashlgli/image/upload/v1775041604/smart-door-lock-500x500_seqmob.webp",
 
         features: [
           "Face recognition unlock",
@@ -48,7 +48,7 @@ export const solutions = [
 
       {
         name: "Premium RFID Lock",
-        image: "https://images.unsplash.com/photo-1600585154526-990dced4db0d",
+        image: "https://res.cloudinary.com/ddashlgli/image/upload/v1775041668/71oSdB6KWdL_bl1zea.jpg",
 
         features: [
           "RFID card access",
@@ -73,13 +73,13 @@ export const solutions = [
     slug: "smart-switch-boards",
     title: "Smart Switch Boards",
     description: "Smart switch boards transform traditional electrical switches into intelligent control systems. They allow users to control lights, appliances, and other devices through touch panels, mobile apps, or voice assistants like Alexa and Google Home. Designed with elegant glass finishes and modern aesthetics, smart switches enhance both functionality and interior design.",
-    cover: "https://images.unsplash.com/photo-1581091870627-3d0c6d1a6e64",
+    cover: "https://res.cloudinary.com/ddashlgli/image/upload/v1775041999/download_yqhoqa.jpg",
 
     models: [
 
       {
         name: "Touch Smart Switch",
-        image: "https://images.unsplash.com/photo-1598300053653-cc8a4c4c9d10",
+        image: "https://res.cloudinary.com/ddashlgli/image/upload/v1775042001/swicth_borad3_pxrxsn.jpg",
 
         features: [
           "Touch glass panel",
@@ -96,7 +96,7 @@ export const solutions = [
 
       {
         name: "WiFi Smart Switch",
-        image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c",
+        image: "https://res.cloudinary.com/ddashlgli/image/upload/v1775042001/swicth_board2_yd6hvs.jpg",
 
         features: [
           "WiFi control",
@@ -120,13 +120,13 @@ export const solutions = [
     slug: "touch-glass-panels",
     title: "Touch Glass Panels",
     description: "Touch glass panels provide a sleek and modern interface for controlling various home automation features. With capacitive touch technology and elegant tempered glass surfaces, these panels deliver a premium user experience. They seamlessly integrate with smart home ecosystems, enabling effortless control of lighting, appliances, and scenes.",
-    cover: "https://images.unsplash.com/photo-1598300053653-cc8a4c4c9d10",
+    cover: "https://res.cloudinary.com/ddashlgli/image/upload/v1775042687/__Ring_Battery_Doorbell_Pro_Review__Enhanced_SECURITY_Features____Thinking_about_upgrading_your_home_security__Our_latest_article_dives_deep_into_the_Ring_Battery_Doorbell_Pro_highlighting_its_to_f7asjf.jpg",
 
     models: [
 
       {
         name: "8M Touch Panel",
-        image: "https://images.unsplash.com/photo-1616594039964-ae9021a400a0",
+        image: "https://res.cloudinary.com/ddashlgli/image/upload/v1775042687/__Ring_Battery_Doorbell_Pro_Review__Enhanced_SECURITY_Features____Thinking_about_upgrading_your_home_security__Our_latest_article_dives_deep_into_the_Ring_Battery_Doorbell_Pro_highlighting_its_to_f7asjf.jpg",
 
         features: [
           "8 module panel",
@@ -143,7 +143,7 @@ export const solutions = [
 
       {
         name: "6M Touch Panel",
-        image: "https://images.unsplash.com/photo-1617806118233-18e1de247200",
+        image: "https://res.cloudinary.com/ddashlgli/image/upload/v1775042467/Incorporating_Glass_Wall_Panels_for_an_Ultra-Modern_Interior_Look_hxi7rl.jpg",
 
         features: [
           "6 module panel",
@@ -182,13 +182,13 @@ export const solutions = [
     slug: "video-door-bells",
     title: "Video Door Bells",
     description: "Video door bells enhance home security by allowing homeowners to see, hear, and communicate with visitors from anywhere using their smartphone. Equipped with HD cameras, motion detection, and night vision, these smart devices provide real-time monitoring and instant alerts, ensuring better safety and convenience for modern homes.",
-    cover: "https://images.unsplash.com/photo-1593642632823-8f785ba67e45",
+    cover: "https://res.cloudinary.com/ddashlgli/image/upload/v1775042688/Ablink_Video_Doorbell_with_Monitor_Wireless_Doorbell_Camera_Without_WiFi_2_4G_Module_Connection_No_APP_and_Subscription_Fees_Two-Way_Audio_Night_zxgt7v.jpg",
 
     models: [
 
       {
         name: "AI Video Door Bell",
-        image: "https://images.unsplash.com/photo-1581093588401-12c6c6d2c5c5",
+        image: "https://res.cloudinary.com/ddashlgli/image/upload/v1775042687/ring_battery_doorbell_kajag4.jpg",
 
         features: [
           "HD camera",
@@ -205,7 +205,7 @@ export const solutions = [
 
       {
         name: "Smart Security Door Bell",
-        image: "https://images.unsplash.com/photo-1581093588401-12c6c6d2c5c5",
+        image: "https://res.cloudinary.com/ddashlgli/image/upload/v1775042687/__Ring_Battery_Doorbell_Pro_Review__Enhanced_SECURITY_Features____Thinking_about_upgrading_your_home_security__Our_latest_article_dives_deep_into_the_Ring_Battery_Doorbell_Pro_highlighting_its_to_f7asjf.jpg",
 
         features: [
           "Motion detection",
@@ -228,13 +228,13 @@ export const solutions = [
     slug: "curtain-automation",
     title: "Curtain Automation",
     description: "Curtain automation systems bring comfort and luxury to modern interiors by allowing curtains to open and close automatically. Using remote controls, mobile apps, or voice commands, users can easily manage natural light and privacy. These systems operate with silent motors and integrate seamlessly with smart home environments.",
-    cover: "https://images.unsplash.com/photo-1616594039964-ae9021a400a0",
+    cover: "https://res.cloudinary.com/ddashlgli/image/upload/v1775042686/download_2_k5vkpo.jpg",
 
     models: [
 
       {
         name: "Motorized Curtain System",
-        image: "https://images.unsplash.com/photo-1616594039964-ae9021a400a0",
+        image: "https://res.cloudinary.com/ddashlgli/image/upload/v1775042686/Make_your_home_look_more_high-tech_with_motorized_drapes__With_motorization_you_can_quickly_open_and_close_the_drapes_with_the_push_of_a_but_zizcwy.jpg",
 
         features: [
           "Remote control",
@@ -258,13 +258,13 @@ export const solutions = [
     slug: "smart-lighting",
     title: "Smart Lighting Solutions",
     description: "Smart lighting solutions provide intelligent control over home lighting systems. Users can adjust brightness, change scenes, schedule lighting automation, and control lights through mobile apps or voice assistants. These systems enhance ambiance, energy efficiency, and convenience in both residential and commercial spaces.",
-    cover: "https://images.unsplash.com/photo-1556911220-bff31c812dba",
+    cover: "https://res.cloudinary.com/ddashlgli/image/upload/v1775042686/Bright_Ideas__Top_Smart_LED_Bulbs_of_2025_Your_Ultimate_Buying_Guide_cmgext.jpg",
 
     models: [
 
       {
         name: "Smart LED System",
-        image: "https://images.unsplash.com/photo-1556911220-bff31c812dba",
+        image: "https://res.cloudinary.com/ddashlgli/image/upload/v1775042685/Modern_Living_Room_with_Sleek_LED_Strip_Lighting_z4bz0q.jpg",
 
         features: [
           "App control lighting",
@@ -288,13 +288,13 @@ export const solutions = [
     slug: "gate-automation",
     title: "Gate Automation System",
     description: "Gate automation systems allow gates to open and close automatically using remote controls, sensors, or smartphone applications. These systems improve security, convenience, and efficiency for homes, villas, and commercial buildings while supporting heavy-duty operation and safety features.",
-    cover: "https://images.unsplash.com/photo-1505692794403-34d4982c01a5",
+    cover: "https://res.cloudinary.com/ddashlgli/image/upload/v1775042000/gteauto_khrpsu.jpg",
 
     models: [
 
       {
         name: "Sliding Gate Motor",
-        image: "https://images.unsplash.com/photo-1505692794403-34d4982c01a5",
+        image: "https://res.cloudinary.com/ddashlgli/image/upload/v1775042000/gateauto2_z8feft.jpg",
 
         features: [
           "Remote control gate",
@@ -318,13 +318,13 @@ export const solutions = [
     slug: "pergola-automation",
     title: "Pergola Automation System",
     description: "Pergola automation systems create luxurious outdoor living spaces by providing adjustable motorized roofs that respond to weather conditions. With remote controls, rain sensors, and durable aluminium structures, automated pergolas offer comfort, protection, and stylish design for terraces, gardens, and patios.",
-    cover: "https://images.unsplash.com/photo-1600585154526-990dced4db0d",
+    cover: "https://res.cloudinary.com/ddashlgli/image/upload/v1775042816/%D9%85%D8%B8%D9%84%D8%A7%D8%AA_%D8%AC%D9%84%D8%B3%D8%A7%D8%AA_oy2rii.jpg",
 
     models: [
 
       {
         name: "Motorized Pergola Roof",
-        image: "https://images.unsplash.com/photo-1600585154526-990dced4db0d",
+        image: "https://res.cloudinary.com/ddashlgli/image/upload/v1775042862/%D9%85%D8%B8%D9%84%D8%A7%D8%AA_%D8%AC%D9%84%D8%B3%D8%A7%D8%AA_%D9%85%D9%88%D8%AF%D8%B1%D9%86_%D8%A8%D8%A7%D9%84%D8%B1%D9%8A%D8%A7%D8%B6__wgop1u.jpg",
 
         features: [
           "Weather resistant",

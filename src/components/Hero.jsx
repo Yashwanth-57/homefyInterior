@@ -237,6 +237,8 @@ import { useNavigate } from "react-router-dom";
 import ServiceUniverse from "./InfiniteServicesScroll";
 import { useEffect, useRef, useState } from "react";
 import Typed from "typed.js";
+import { FaProjectDiagram, FaRegCalendarCheck } from "react-icons/fa"; // example icons
+
 
 /* =========================
    IMAGE SLIDER
@@ -320,34 +322,40 @@ export default function PremiumHero() {
       <div className="relative z-10 text-center mb-10 md:mb-24 max-w-[95%] sm:max-w-2xl md:max-w-4xl lg:max-w-5xl mx-auto">
 
         {/* SMALL LABEL */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-          className="w-full text-center font-bold uppercase text-lg sm:text-xl md:text-2xl tracking-widest mb-8 -mt-10"
-        >
-          {"@HomeCraft Interiors".split("").map((letter, idx) => (
-            <span
-              key={idx}
-              style={{ color: ["#ff6ec4", "#7873f5", "#42e695", "#f9d423", "#ff4e50", "#1fddff"][idx % 6] }}
-              className="inline-block"
-            >
-              {letter}
-            </span>
-          ))}
-        </motion.div>
-
-        {/* MAIN HEADING */}
-        <motion.h1
-          initial={{ opacity: 0, y: 60 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.2 }}
-          className="text-[32px] sm:text-[42px] md:text-[60px] lg:text-[95px] leading-[1.1] font-playfair text-white"
-        >
-          Crafting Timeless
-          <br />
-          Luxury Spaces
-        </motion.h1>
+<motion.div
+  initial={{ opacity: 0, y: 30 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 1 }}
+  className="
+    w-full text-center
+    font-semibold uppercase
+    text-lg sm:text-xl md:text-2xl
+    tracking-[0.3em]
+    mb-8 -mt-10
+    text-yellow-100
+  "
+>
+  {"@HomeCraft Interiors".split("").map((letter, idx) => (
+    <span key={idx} className="inline-block">
+      {letter}
+    </span>
+  ))}
+</motion.div>
+<motion.h1
+  className="
+    text-[32px] sm:text-[42px] md:text-[60px] lg:text-[95px]
+    leading-[1.05]
+    font-inter  /* 🔥 THIS */
+    font-semibold
+    tracking-tight
+    text-center
+    text-white
+  "
+>
+  Crafting Timeless
+  <br />
+  Luxury Spaces
+</motion.h1>
 
         {/* TYPING DESCRIPTION */}
         <motion.p
@@ -359,64 +367,134 @@ export default function PremiumHero() {
           <span ref={el} />
         </motion.p>
 
-        {/* BUTTONS */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.7 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-6 mt-8 md:mt-12"
-        >
-          <button
-            onClick={() => navigate("/projects")}
-            className="px-8 md:px-12 py-3 md:py-4 text-sm md:text-base rounded-full text-white font-semibold bg-[#7f5af0] hover:bg-[#6246ea] transition-all duration-500 hover:scale-105 shadow-[0_10px_25px_rgba(127,90,240,0.4)] hover:shadow-[0_15px_40px_rgba(98,70,234,0.6)]"
-          >
-            View Projects
-          </button>
 
-          <button
-            onClick={() => navigate("/consultation")}
-            className="px-8 md:px-12 py-3 md:py-4 text-sm md:text-base rounded-full text-white font-semibold bg-[#e63946] hover:bg-[#c1121f] transition-all duration-500 hover:scale-105 shadow-[0_10px_25px_rgba(230,57,70,0.4)] hover:shadow-[0_15px_40px_rgba(193,18,31,0.6)]"
-          >
-            Book Consultation
-          </button>
-        </motion.div>
+<motion.div
+  initial={{ opacity: 0, y: 30 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ delay: 0.7 }}
+  className="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-6 mt-8 md:mt-12"
+>
+  {/* PRIMARY - Strong Lavender */}
+  <button
+    onClick={() => navigate("/projects")}
+    className="
+      flex items-center justify-center gap-2
+      px-8 md:px-12 py-3 md:py-4
+      text-sm md:text-base
+      rounded-full font-medium
+
+      text-[#1f1f1f]
+      bg-[#c7d2fe]
+      border-2 border-[#818cf8]
+
+      transition-all duration-300
+
+      hover:bg-[#a5b4fc]
+      hover:border-[#6366f1]
+      hover:scale-105
+
+      active:scale-95
+    "
+  >
+    <FaProjectDiagram className="text-lg" />
+    View Projects
+  </button>
+
+  {/* SECONDARY - Strong Mint */}
+  <button
+    onClick={() => navigate("/consultation")}
+    className="
+      flex items-center justify-center gap-2
+      px-8 md:px-12 py-3 md:py-4
+      text-sm md:text-base
+      rounded-full font-medium
+
+      text-[#1f1f1f]
+      bg-[#bbf7d0]
+      border-2 border-[#4ade80]
+
+      transition-all duration-300
+
+      hover:bg-[#86efac]
+      hover:border-[#22c55e]
+      hover:scale-105
+
+      active:scale-95
+    "
+  >
+    <FaRegCalendarCheck className="text-lg" />
+    Book Consultation
+  </button>
+</motion.div>
    {/* SERVICE UNIVERSE */}
         <div className="m-8 md:mt-10">
           <ServiceUniverse />
         </div>
         {/* ===== NEW SECTION (ADDED) ===== */}
-        <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6 px-4">
+        {/* ===== NEW SECTION ===== */}
+<div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6 px-4">
 
-          {/* INTERIOR */}
-          <div
-            onClick={() => navigate("/interior")}
-            className="relative h-[220px] md:h-[300px] rounded-2xl overflow-hidden cursor-pointer group"
-          >
-            <ImageSlider images={interiorImages} />
-            <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition duration-500" />
-            <div className="absolute bottom-4 left-4 text-white text-lg md:text-xl font-semibold">
-              Interior Design View
-              
-            </div>
-            <div className="absolute inset-0 border border-white/30 rounded-2xl group-hover:border-white transition duration-500"></div>
-          </div>
+  {/* INTERIOR */}
+  <div
+    onClick={() => navigate("/interior")}
+    className="relative h-[220px] md:h-[300px] rounded-2xl overflow-hidden cursor-pointer group"
+  >
+    {/* 🔥 Animated Border */}
+    <div className="absolute inset-0 rounded-2xl p-[2px]">
+      <div className="absolute inset-0 rounded-2xl bg-[conic-gradient(from_0deg,#C6A75E,#ffffff,#C6A75E)] animate-spin-slow"></div>
+      <div className="absolute inset-[2px] bg-black rounded-2xl"></div>
+    </div>
 
-          {/* EXTERIOR */}
-          <div
-            onClick={() => navigate("/exterior")}
-            className="relative h-[220px] md:h-[300px] rounded-2xl overflow-hidden cursor-pointer group"
-          >
-            <ImageSlider images={exteriorImages} />
-            <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition duration-500" />
-            <div className="absolute bottom-4 left-4 text-white text-lg md:text-xl font-semibold">
-              Exterior Design View
-           
-            </div>
-            <div className="absolute inset-0 border border-white/30 rounded-2xl group-hover:border-white transition duration-500"></div>
-          </div>
+    {/* Content */}
+    <div className="relative h-full w-full rounded-2xl overflow-hidden">
+      <ImageSlider images={interiorImages} />
 
-        </div>
+      <div className="absolute inset-0 bg-black/30 group-hover:bg-black/50 transition duration-500" />
 
+      <div className="absolute bottom-4 left-4 text-white text-lg md:text-xl font-semibold">
+        Interior Design View
+      </div>
+
+      {/* 🔥 Hover Text */}
+      <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-500">
+        <p className="text-white text-lg md:text-xl font-medium tracking-wide">
+          Tap for more details →
+        </p>
+      </div>
+    </div>
+  </div>
+
+  {/* EXTERIOR */}
+  <div
+    onClick={() => navigate("/exterior")}
+    className="relative h-[220px] md:h-[300px] rounded-2xl overflow-hidden cursor-pointer group"
+  >
+    {/* 🔥 Animated Border */}
+    <div className="absolute inset-0 rounded-2xl p-[2px]">
+      <div className="absolute inset-0 rounded-2xl bg-[conic-gradient(from_0deg,#C6A75E,#ffffff,#C6A75E)] animate-spin-slow"></div>
+      <div className="absolute inset-[2px] bg-black rounded-2xl"></div>
+    </div>
+
+    {/* Content */}
+    <div className="relative h-full w-full rounded-2xl overflow-hidden">
+      <ImageSlider images={exteriorImages} />
+
+      <div className="absolute inset-0 bg-black/30 group-hover:bg-black/50 transition duration-500" />
+
+      <div className="absolute bottom-4 left-4 text-white text-lg md:text-xl font-semibold">
+        Exterior Design View
+      </div>
+
+      {/* 🔥 Hover Text */}
+      <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-500">
+        <p className="text-white text-lg md:text-xl font-medium tracking-wide">
+          Tap for more details →
+        </p>
+      </div>
+    </div>
+  </div>
+
+</div>
      
 
       </div>
