@@ -101,7 +101,7 @@ export default function ProjectDetails() {
         {/* BACK BUTTON */}
 
         <button
-          onClick={() => navigate("/projects")}
+          onClick={() => navigate(-1)}
           className="
           absolute top-20 left-8
           bg-white/80 backdrop-blur-lg

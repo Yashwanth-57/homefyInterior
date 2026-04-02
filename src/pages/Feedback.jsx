@@ -128,6 +128,7 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import emailjs from "emailjs-com";
+import LuxuryPageHero from "../components/LuxuryPageHero";
 
 export default function Reviews() {
 
@@ -173,24 +174,11 @@ const reviews = [
     <div className="w-full  text-black">
 
       {/* HERO */}
-      <section className="relative h-[55vh] w-full">
-        <img
-          src="https://res.cloudinary.com/ddashlgli/image/upload/v1773103040/WhatsApp_Image_2026-03-07_at_21.54.57_1_ygo2qy.jpg"
-          className="absolute inset-0 w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-black/60" />
-
-        <div className="relative h-full flex items-center justify-center text-center px-4">
-          <div>
-            <p className="text-yellow-400 tracking-[0.4em] text-xs mb-3">
-              TESTIMONIALS
-            </p>
-            <h1 className="text-4xl md:text-6xl font-boldn text-white">
-              What Our Clients Say
-            </h1>
-          </div>
-        </div>
-      </section>
+   <LuxuryPageHero
+  title="Client Experiences"
+  subtitle="What Our Clients Say"
+  image="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1920"
+/>
 
       {/* BIG CARDS */}
       <section className="max-w-6xl mx-auto px-6 py-24 text-black ">

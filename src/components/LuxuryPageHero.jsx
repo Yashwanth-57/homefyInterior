@@ -93,12 +93,20 @@ export default function LuxuryPageHero({ title, subtitle, image }) {
       {/* Content */}
       <div className="relative z-10 text-center px-6 max-w-5xl">
         {/* Subtitle */}
-        <motion.p
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-          className="text-[#D4AF37] tracking-[0.7em] text-sm mb-6"
-        >
+       <motion.p
+  initial={{ opacity: 0, y: 40 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 1 }}
+  className="
+    text-white      /* 🔥 strong luxury gold */
+    text-base md:text-lg   /* 🔥 bigger = stronger */
+    font-semibold          /* 🔥 bold but classy */
+    tracking-[0.35em]      /* 🔥 perfect spacing */
+    uppercase              /* 🔥 premium style */
+    mb-6
+  "
+>
+
           {subtitle}
         </motion.p>
 
@@ -123,7 +131,7 @@ export default function LuxuryPageHero({ title, subtitle, image }) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.7 }}
-          className="mt-10 mx-auto max-w-xl bg-white/5 backdrop-blur-2xl border border-white/10 rounded-2xl px-10 py-6 text-white/80 shadow-[0_20px_100px_rgba(0,0,0,0.6)]"
+          className="mt-10 mx-auto max-w-xl bg-white/60 backdrop-blur-2xl border border-[yellow] rounded-2xl px-10 py-6 text-black/100 shadow-[0_20px_100px_rgba(0,0,0,0.6)]"
         >
           Crafted for elite lifestyles and timeless interiors.
         </motion.div>

@@ -85,7 +85,7 @@ export default function Consultation() {
 
             <p className="flex items-center gap-3">
               <span className="text-[var(--accent-primary)] text-xl">📞</span>
-              +91 917799448384
+              +91 7799448384
             </p>
 
             <p className="flex items-center gap-3">

@@ -5,10 +5,10 @@ import { motion } from "framer-motion";
 
 export default function About() {
   const stats = [
-    { number: "150+", label: "Projects Completed" },
-    { number: "10+", label: "Years Experience" },
+    { number: "120+", label: "Projects Completed" },
+    { number: "5+", label: "Years Experience" },
     { number: "98%", label: "Client Satisfaction" },
-    { number: "25+", label: "Design Experts" },
+    { number: "15+", label: "Design Experts" },
   ];
 
   const containerVariants = {

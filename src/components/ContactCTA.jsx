@@ -1,131 +1,198 @@
 import { motion } from "framer-motion";
-import { useNavigate } from "react-router-dom";
-import { MessageCircle, PencilRuler, Factory, Truck, CheckCircle } from "lucide-react";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 
-/* 🔥 Typing Effect */
-function TypingText({ text, start, delay = 25 }) {
-  const [displayed, setDisplayed] = useState("");
+export default function Navbar() {
 
-  useEffect(() => {
-    if (!start) return;
+  const [scrolled, setScrolled] = useState(false);
+  const [open, setOpen] = useState(false);
 
-    let i = 0;
-    const interval = setInterval(() => {
-      setDisplayed(text.slice(0, i + 1));
-      i++;
-      if (i === text.length) clearInterval(interval);
-    }, delay);
-
-    return () => clearInterval(interval);
-  }, [start, text, delay]);
-
-  return <span>{displayed}</span>;
-}
-
-export default function ProcessCTA() {
   const navigate = useNavigate();
-  const [startTyping, setStartTyping] = useState(false);
-  const hasMounted = useRef(false); // 👈 important
-
-  const steps = [
-    { icon: MessageCircle, title: "Initial Consultation", desc: "Discuss your vision & get a tailored estimate." },
-    { icon: PencilRuler, title: "Design & Approval", desc: "We create refined drawings and approve every detail with you." },
-    { icon: Factory, title: "Production", desc: "High-quality production in our own factories ensuring precision." },
-    { icon: Truck, title: "Delivery & Installation", desc: "Seamless material delivery and professional installation." },
-    { icon: CheckCircle, title: "Project Completion", desc: "Perfect handover, completed on time to your satisfaction." },
-  ];
+  const location = useLocation();
 
   useEffect(() => {
-    hasMounted.current = true; // after first render
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 30);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const navItems = [
+    { name: "Home", path: "/" },
+    { name: "About", path: "/about" },
+    { name: "Gallery", path: "/gallery" },
+    { name: "Projects", path: "/projects" },
+    { name: "Feedback", path: "/feedback" },
+    { name: "Smart Solutions", path: "/solutions" },
+    { name: "Consultation", path: "/consultation" },
+  ];
+
   return (
-    <section className="py-32 relative max-w-7xl mx-auto px-6">
+    <motion.nav
+      initial={{ y: -80, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      className={`
+        fixed top-0 left-0 w-full z-50
+        transition-all duration-500
 
-      {/* 🔥 Heading */}
-      <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        onViewportEnter={() => {
-          if (hasMounted.current) {
-            setStartTyping(true); // 👈 only after mount
-          }
-        }}
-        transition={{ duration: 1 }}
-        className="text-center mb-28"
-      >
-        <p className="text-[#C6A75E] tracking-widest text-sm md:text-base mb-3 font-medium">
-          OUR PROCESS
-        </p>
+        ${
+          scrolled
+            ? "bg-[#F7F3ED]/95 backdrop-blur-2xl shadow-[0_8px_30px_rgba(0,0,0,0.08)] border-b border-[#E6D8B5]"
+            : "bg-[#F7F3ED]/70 backdrop-blur-xl border-b border-[#E6D8B5]/40"
+        }
+      `}
+    >
 
-        <h2 className="text-6xl md:text-7xl font-playfair font-bold text-[#3A2F25] leading-tight">
-          From Concept to Completion <br className="hidden md:block" /> in Just 45 Days
-        </h2>
-      </motion.div>
+      <div className={`
+        max-w-7xl mx-auto px-6 
+        flex justify-between items-center
+        transition-all duration-500
+        ${scrolled ? "py-3" : "py-5"}
+      `}>
 
-      {/* 🔥 Steps */}
-      <div className="relative">
+        {/* Logo */}
+        <div
+          onClick={() => navigate("/")}
+          className="
+            cursor-pointer 
+            text-[#1F1F1F] 
+            text-xl md:text-2xl 
+            font-playfair 
+            tracking-wide
+            hover:opacity-80 transition
+          "
+        >
+          Homecraft Interiors
+        </div>
 
-        <div className="hidden md:block absolute left-1/2 top-0 h-full w-1 bg-[#C6A75E]/20 -translate-x-1/2"></div>
-
-        <div className="flex flex-col md:flex-row md:justify-between items-start md:items-center gap-20">
-          {steps.map((step, index) => {
-            const Icon = step.icon;
+        {/* Desktop */}
+        <div className="hidden md:flex gap-10">
+          {navItems.map((item, index) => {
+            const isActive = location.pathname === item.path;
 
             return (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 80 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: index * 0.2 }}
-                className="relative w-full md:w-1/5 flex flex-col items-center text-center group"
-              >
+              <div key={index} className="relative group">
 
-                <motion.div
-                  whileHover={{ scale: 1.1, rotate: 5 }}
-                  className="relative z-10 flex items-center justify-center w-24 h-24 rounded-full border-4 border-[#C6A75E] bg-[#F5EFE6] shadow-lg"
+                <button
+                  onClick={() => navigate(item.path)}
+                  className={`
+                    text-[15px]
+                    tracking-[0.08em]
+                    transition-all duration-300
+                    relative
+
+                    ${
+                      isActive
+                        ? "text-[#B8964A] font-semibold"
+                        : "text-[#3A3A3A] group-hover:text-[#1F1F1F]"
+                    }
+                  `}
                 >
-                  <Icon className="text-[#8B6B2E]" size={40} />
-                </motion.div>
+                  {/* ✨ TEXT HOVER LIFT */}
+                  <motion.span
+                    whileHover={{ y: -2 }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                    className="inline-block"
+                  >
+                    {item.name}
+                  </motion.span>
+                </button>
 
-                <div className="mt-6">
-                  <h3 className="font-playfair text-2xl md:text-3xl font-bold text-[#3A2F25]">
-                    {step.title}
-                  </h3>
+                {/* 🔥 PREMIUM UNDERLINE */}
+                <motion.div
+                  initial={{ width: 0 }}
+                  animate={{ width: isActive ? "100%" : "0%" }}
+                  whileHover={{ width: "100%" }}
+                  transition={{ duration: 0.4, ease: "easeInOut" }}
+                  className="
+                    absolute left-0 -bottom-2 h-[2px]
+                    bg-gradient-to-r from-[#C6A75E] via-[#E6D8B5] to-[#C6A75E]
+                    rounded-full
+                  "
+                />
 
-                  <p className="text-[#2A241D] text-base md:text-lg mt-2 font-medium">
-                    <TypingText text={step.desc} start={startTyping} />
-                  </p>
-                </div>
-
-                {index !== steps.length - 1 && (
-                  <div className="md:hidden w-full h-1 bg-[#C6A75E]/20 mt-6 rounded-full"></div>
-                )}
-              </motion.div>
+              </div>
             );
           })}
         </div>
+
+        {/* Mobile Menu Button */}
+        <button
+          onClick={() => setOpen(!open)}
+          className="
+            md:hidden text-2xl 
+            text-[#1F1F1F]
+            hover:scale-110 transition
+          "
+        >
+          ☰
+        </button>
+
       </div>
 
-      {/* 🔥 CTA */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        className="mt-32 flex justify-center"
-      >
-        <motion.button
-          onClick={() => navigate("/consultation")}
-          whileHover={{ scale: 1.05 }}
-          className="px-20 py-6 rounded-full bg-[#C6A75E] text-[#3A2F25] text-2xl font-bold"
+      {/* Mobile Menu */}
+      {open && (
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4 }}
+          className="md:hidden bg-[#F7F3ED] border-t border-[#E6D8B5]"
         >
-          Get Started Today
-        </motion.button>
-      </motion.div>
+          <div className="flex flex-col px-6 py-6">
 
-    </section>
+            {navItems.map((item, index) => {
+              const isActive = location.pathname === item.path;
+
+              return (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: index * 0.05 }}
+                  className="relative py-3"
+                >
+
+                  <button
+                    onClick={() => {
+                      navigate(item.path);
+                      setOpen(false);
+                    }}
+                    className={`
+                      w-full text-left text-lg tracking-[0.05em]
+                      transition-all duration-300
+
+                      ${
+                        isActive
+                          ? "text-[#B8964A] font-semibold"
+                          : "text-[#2B2B2B]"
+                      }
+                    `}
+                  >
+                    {item.name}
+                  </button>
+
+                  {/* MOBILE UNDERLINE */}
+                  {isActive && (
+                    <motion.div
+                      layoutId="nav-underline-mobile"
+                      className="
+                        mt-2 h-[2px] w-16 
+                        bg-gradient-to-r from-[#C6A75E] to-[#E6D8B5]
+                        rounded-full
+                      "
+                    />
+                  )}
+
+                </motion.div>
+              );
+            })}
+
+          </div>
+        </motion.div>
+      )}
+
+    </motion.nav>
   );
 }

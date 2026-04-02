@@ -64,13 +64,41 @@ body {
 
   color: var(--text-primary);
  
+    font-family: 'Manrope', sans-serif;
 
   overflow-x: hidden;
 
   scroll-behavior: smooth;
 
 }
+/* 🔥 PREMIUM TEXT STYLE */
+.luxury-heading {
+  font-family: 'Playfair Display', serif;
 
+  font-weight: 400;
+
+  font-size: clamp(42px, 6vw, 96px);  /* 🔥 responsive big scale */
+  line-height: 1;
+
+  letter-spacing: 0.18em;  /* 🔥 THIS is luxury */
+  text-transform: uppercase;
+
+  color: #d8d291;
+
+  /* 🔥 crisp rendering */
+  -webkit-font-smoothing: antialiased;
+}
+.luxury-sub {
+  font-family: 'Manrope', sans-serif;
+
+  font-size: 12px;
+  letter-spacing: 0.25em;  /* 🔥 big spacing = luxury */
+  text-transform: uppercase;
+
+  color: #C6A87D;
+
+  opacity: 0.9;
+}
 
 
 /* ========================================= */
@@ -79,7 +107,7 @@ body {
 
 h1, h2, h3, h4, h5 {
 
-  font-family: "Cormorant Garamond", serif;
+ font-family: 'Bodoni Moda', serif;
 
   font-weight: 500;
 

@@ -16,6 +16,7 @@ import ScrollProgressBar from "../components/ScrollProgress";
 import Background3D from "../components/Background3D";
 
 import { useRef, useEffect } from "react";
+import HomePopup from "../components/HomePopup";
 
 export default function Home() {
   const scrollY = useRef(0);
@@ -30,6 +31,7 @@ export default function Home() {
   }, []);
 
   return (
+    
     <SmoothScroll>
       {/* 🔥 LUXURY 3D BACKGROUND */}
    {/* 🔥 BACKGROUND LIMITED AREA */}
@@ -40,8 +42,8 @@ export default function Home() {
 
       <PageTransition>
         <HeroAnnouncement />
-        <Navbar />
-
+ 
+    <HomePopup />
         {/* 🔥 MAIN CONTENT */}
         <main className="relative z-10 text-white">
 

@@ -345,7 +345,7 @@ export default function PremiumHero() {
   className="
     text-[32px] sm:text-[42px] md:text-[60px] lg:text-[95px]
     leading-[1.05]
-    font-inter  /* 🔥 THIS */
+    luxury-heading  /* 🔥 THIS */
     font-semibold
     tracking-tight
     text-center

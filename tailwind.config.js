@@ -11,6 +11,10 @@ theme: {
       inter: ['Inter', 'sans-serif'],
        sans: ['Inter', 'sans-serif'],          // body text
         serif: ['Playfair Display', 'serif'],   // headings
+           luxury: ["Playfair Display", "serif"],
+         display: ["Bodoni Moda", "serif"],
+      sans: ["Manrope", "sans-serif"],
+           body: ["Inter", "sans-serif"],
     },
   },
 },
