@@ -6,6 +6,7 @@ import { projectsData } from "../data/ProjectsData";
 export default function Projects() {
   const navigate = useNavigate();
 
+
   const [index, setIndex] = useState(1);
   const [isAnimating, setIsAnimating] = useState(true);
   const total = projectsData.length;
@@ -54,11 +55,11 @@ export default function Projects() {
 
       {/* Heading */}
       <div className="max-w-7xl mx-auto px-6 mb-16 text-center">
-        <p className="luxury-sub  text-[#C6A87D] uppercase tracking-[4px] text-sm mb-4">
+        <p className="section-label">
           Our Work
         </p>
 
-        <h2 className="text-[#111111] text-4xl md:text-6xl font-light">
+        <h2 className="section-title">
           Crafted Luxury Spaces
         </h2>
 

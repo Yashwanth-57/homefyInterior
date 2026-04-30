@@ -62,10 +62,7 @@ export default function Consultation() {
 
 
           <h2 className="
-          font-playfair
-          text-4xl md:text-5xl
-          mb-6
-          text-[var(--text-primary)]
+        section-title
           ">
             Get Free Interior Consultation
           </h2>
@@ -211,6 +208,7 @@ export default function Consultation() {
             <option>3BHK</option>
             <option>Villa</option>
             <option>Office</option>
+            <option>other</option>
           </select>
 
 

@@ -239,7 +239,7 @@ const reviews = [
 
         <div className="p-8 rounded-3xl border border-gray-200 shadow-sm">
 
-          <h2 className="text-3xl font-semibold mb-6 text-center">
+          <h2 className="section-title">
             Share Your Experience
           </h2>
 

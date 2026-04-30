@@ -15,7 +15,7 @@ export default function Gallery() {
     
     <section className="bg-[#EFEAE3] min-h-screen py-24 px-6">
 
-      <h1 className="text-5xl md:text-6xl font-playfair text-center mb-20">
+      <h1 className="section-title text-center p-10">
         Gallery
       </h1>
 

@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-
+import { GiSofa } from "react-icons/gi";
 export default function Navbar() {
 
   const [scrolled, setScrolled] = useState(false);
@@ -58,7 +58,7 @@ export default function Navbar() {
           "
         >
           Homecraft Interiors
-        </div>
+</div>
 
         {/* Desktop */}
         <div className="hidden md:flex gap-10">

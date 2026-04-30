@@ -27,8 +27,7 @@ export default function About() {
             viewport={{ once: true }}
           >
             <h1
-              className="text-5xl md:text-7xl mb-6"
-              style={{ fontFamily: "Playfair Display" }}
+              className="section-title"
             >
               About Our
               <br />

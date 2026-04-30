@@ -73,11 +73,14 @@ export default function About() {
         className="max-w-5xl mx-auto flex flex-col gap-6 text-center md:text-left"
       >
         <motion.p variants={itemVariants} className="text-[#C6A75E] tracking-[0.3em] text-sm">
+          <p className="section-label">
           ABOUT OUR STUDIO
+          </p>
         </motion.p>
 
         <motion.h2 variants={itemVariants} className="text-4xl md:text-5xl font-playfair text-[#2B2B2B] leading-tight">
-          Designing Timeless<br />Luxury Interiors
+          <h2 className="section-title">         Designing Timeless<br />Luxury Interiors
+          </h2>
         </motion.h2>
 
         <motion.p variants={itemVariants} className="text-lg md:text-xl text-[#5E5E5E] leading-relaxed">

@@ -93,31 +93,39 @@ export default function LuxuryPageHero({ title, subtitle, image }) {
       {/* Content */}
       <div className="relative z-10 text-center px-6 max-w-5xl">
         {/* Subtitle */}
-       <motion.p
+<motion.p
   initial={{ opacity: 0, y: 40 }}
   animate={{ opacity: 1, y: 0 }}
   transition={{ duration: 1 }}
-  className="
-    text-white      /* 🔥 strong luxury gold */
-    text-base md:text-lg   /* 🔥 bigger = stronger */
-    font-semibold          /* 🔥 bold but classy */
-    tracking-[0.35em]      /* 🔥 perfect spacing */
-    uppercase              /* 🔥 premium style */
-    mb-6
-  "
+className="
+  font-accent
+  text-white/80
+  text-sm md:text-base
+  font-light
+  tracking-[0.2em]
+  uppercase
+  mb-6
+"
 >
 
           {subtitle}
         </motion.p>
 
         {/* Title */}
-        <motion.h1
-          initial={{ opacity: 0, y: 90 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.2 }}
-          className="relative text-[65px] md:text-[50px] leading-[1.05] font-semibold"
-          style={{ fontFamily: "Playfair Display" }}
-        >
+       <motion.h1
+  initial={{ opacity: 0, y: 90 }}
+  animate={{ opacity: 1, y: 0 }}
+  transition={{ duration: 1.2 }}
+  className="
+  font-accent
+  relative
+  text-[42px] sm:text-[56px] md:text-[72px] lg:text-[88px]
+  leading-[1.05]
+  tracking-[-0.02em]
+  text-white
+  drop-shadow-[0_8px_30px_rgba(0,0,0,0.4)]
+"
+>
           <span className="text-white drop-shadow-[0_20px_80px_rgba(0,0,0,0.9)]">
             {title}
           </span>

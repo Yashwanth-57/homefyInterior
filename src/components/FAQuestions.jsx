@@ -63,7 +63,8 @@ const [active, setActive] = useState(null);
 
 return (
 
-<section className="bg-[#EFEAE3] py-32 px-6">
+<section className="py-32 max-w-7xl mx-auto px-6">
+    
 
 <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-20">
 

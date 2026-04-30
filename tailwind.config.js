@@ -3,20 +3,21 @@ export default {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
-theme: {
+  theme: {
+    extend: {
+      fontFamily: {
+         heading: ["Clash Display", "sans-serif"],
+  body: ["General Sans", "sans-serif"],
+        accent: ["Playfair Display", "serif"], // 🔥 special highlights
+      },
+    },
+  },
+  theme: {
   extend: {
-    fontFamily: {
-     cormorant: ['Cormorant', 'serif'],
-      outfit: ['Outfit', 'sans-serif'],
-      inter: ['Inter', 'sans-serif'],
-       sans: ['Inter', 'sans-serif'],          // body text
-        serif: ['Playfair Display', 'serif'],   // headings
-           luxury: ["Playfair Display", "serif"],
-         display: ["Bodoni Moda", "serif"],
-      sans: ["Manrope", "sans-serif"],
-           body: ["Inter", "sans-serif"],
+    animation: {
+      spin: "spin 4s linear infinite",
     },
   },
 },
   plugins: [],
-}
+};

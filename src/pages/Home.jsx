@@ -72,7 +72,7 @@ export default function Home() {
      
 
         {/* 🔥 FOOTER (OUTSIDE BACKGROUND) */}
-        <div className="relative z-20 bg-[#F7F3ED] text-black pt-24">
+        <div className="relative z-20 bg-[#F7F3ED] text-black pt-1">
           
           {/* 🔥 SMOOTH TRANSITION */}
           <div className="absolute top-0 left-0 w-full h-24 bg-gradient-to-t from-[#F7F3ED] to-transparent pointer-events-none" />

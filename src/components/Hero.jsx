@@ -243,6 +243,22 @@ import { FaProjectDiagram, FaRegCalendarCheck } from "react-icons/fa"; // exampl
 /* =========================
    IMAGE SLIDER
 ========================= */
+function TypingLine({ text, delay = 20 }) {
+  const [display, setDisplay] = useState("");
+
+  useEffect(() => {
+    let i = 0;
+    const interval = setInterval(() => {
+      setDisplay(text.slice(0, i + 1));
+      i++;
+      if (i === text.length) clearInterval(interval);
+    }, delay);
+
+    return () => clearInterval(interval);
+  }, [text, delay]);
+
+  return <p>{display}</p>;
+}
 function ImageSlider({ images }) {
   const [index, setIndex] = useState(0);
 
@@ -267,6 +283,7 @@ function ImageSlider({ images }) {
     </div>
   );
 }
+
 
 export default function PremiumHero() {
   const navigate = useNavigate();
@@ -335,7 +352,7 @@ export default function PremiumHero() {
     text-yellow-100
   "
 >
-  {"@HomeCraft Interiors".split("").map((letter, idx) => (
+  {"Turning Spaces into Experiences".split("").map((letter, idx) => (
     <span key={idx} className="inline-block">
       {letter}
     </span>
@@ -345,7 +362,7 @@ export default function PremiumHero() {
   className="
     text-[32px] sm:text-[42px] md:text-[60px] lg:text-[95px]
     leading-[1.05]
-    luxury-heading  /* 🔥 THIS */
+    luxury-heading=  /* 🔥 THIS */
     font-semibold
     tracking-tight
     text-center
@@ -432,65 +449,95 @@ export default function PremiumHero() {
         </div>
         {/* ===== NEW SECTION (ADDED) ===== */}
         {/* ===== NEW SECTION ===== */}
+
 <div className="mt-12 grid grid-cols-1 md:grid-cols-2 gap-6 px-4">
 
-  {/* INTERIOR */}
-  <div
-    onClick={() => navigate("/interior")}
-    className="relative h-[220px] md:h-[300px] rounded-2xl overflow-hidden cursor-pointer group"
-  >
-    {/* 🔥 Animated Border */}
-    <div className="absolute inset-0 rounded-2xl p-[2px]">
-      <div className="absolute inset-0 rounded-2xl bg-[conic-gradient(from_0deg,#C6A75E,#ffffff,#C6A75E)] animate-spin-slow"></div>
-      <div className="absolute inset-[2px] bg-black rounded-2xl"></div>
+  {/* ================= INTERIOR ================= */}
+  <div>
+    {/* CARD */}
+    <div
+      onClick={() => navigate("/interior")}
+      className="relative h-[220px] md:h-[300px] rounded-2xl cursor-pointer group"
+    >
+      {/* BORDER */}
+      <div className="absolute inset-0 rounded-2xl p-[2px]">
+        <div className="w-full h-full rounded-2xl bg-[#C6A75E]" />
+      </div>
+
+      {/* CONTENT */}
+      <div className="relative h-full w-full rounded-2xl overflow-hidden bg-black
+                      shadow-[0_0_8px_#C6A75E]
+                      md:group-hover:shadow-[0_0_25px_#C6A75E] transition duration-500">
+
+        <ImageSlider images={interiorImages} />
+
+        <div className="absolute inset-0 bg-black/30 md:group-hover:bg-black/50 transition duration-500" />
+
+        <div className="absolute bottom-4 left-4 text-white text-lg md:text-xl font-semibold">
+          Interior Design View
+        </div>
+
+        <div className="absolute inset-0 flex items-center justify-center opacity-0 md:group-hover:opacity-100 transition duration-500">
+          <p className="text-white text-lg md:text-xl font-medium tracking-wide">
+            Tap for more details →
+          </p>
+        </div>
+      </div>
     </div>
 
-    {/* Content */}
-    <div className="relative h-full w-full rounded-2xl overflow-hidden">
-      <ImageSlider images={interiorImages} />
-
-      <div className="absolute inset-0 bg-black/30 group-hover:bg-black/50 transition duration-500" />
-
-      <div className="absolute bottom-4 left-4 text-white text-lg md:text-xl font-semibold">
-        Interior Design View
-      </div>
-
-      {/* 🔥 Hover Text */}
-      <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-500">
-        <p className="text-white text-lg md:text-xl font-medium tracking-wide">
-          Tap for more details →
-        </p>
-      </div>
+    {/* 🔥 TYPING TEXT BELOW */}
+    <div className="mt-3 px-2 text-center">
+      <p className="text-[#C6A75E] text-sm font-semibold">
+        <TypingLine text="Elegant Interior Designs" />
+      </p>
+      <p className="text-white/80 text-xs mt-1">
+        <TypingLine text="Crafted for comfort & luxury living" delay={15} />
+      </p>
     </div>
   </div>
 
-  {/* EXTERIOR */}
-  <div
-    onClick={() => navigate("/exterior")}
-    className="relative h-[220px] md:h-[300px] rounded-2xl overflow-hidden cursor-pointer group"
-  >
-    {/* 🔥 Animated Border */}
-    <div className="absolute inset-0 rounded-2xl p-[2px]">
-      <div className="absolute inset-0 rounded-2xl bg-[conic-gradient(from_0deg,#C6A75E,#ffffff,#C6A75E)] animate-spin-slow"></div>
-      <div className="absolute inset-[2px] bg-black rounded-2xl"></div>
+
+  {/* ================= EXTERIOR ================= */}
+  <div>
+    {/* CARD */}
+    <div
+      onClick={() => navigate("/exterior")}
+      className="relative h-[220px] md:h-[300px] rounded-2xl cursor-pointer group"
+    >
+      {/* BORDER */}
+      <div className="absolute inset-0 rounded-2xl p-[2px]">
+        <div className="w-full h-full rounded-2xl bg-[#C6A75E]" />
+      </div>
+
+      {/* CONTENT */}
+      <div className="relative h-full w-full rounded-2xl overflow-hidden bg-black
+                      shadow-[0_0_8px_#C6A75E]
+                      md:group-hover:shadow-[0_0_25px_#C6A75E] transition duration-500">
+
+        <ImageSlider images={exteriorImages} />
+
+        <div className="absolute inset-0 bg-black/30 md:group-hover:bg-black/50 transition duration-500" />
+
+        <div className="absolute bottom-4 left-4 text-white text-lg md:text-xl font-semibold">
+          Exterior Design View
+        </div>
+
+        <div className="absolute inset-0 flex items-center justify-center opacity-0 md:group-hover:opacity-100 transition duration-500">
+          <p className="text-white text-lg md:text-xl font-medium tracking-wide">
+            Tap for more details →
+          </p>
+        </div>
+      </div>
     </div>
 
-    {/* Content */}
-    <div className="relative h-full w-full rounded-2xl overflow-hidden">
-      <ImageSlider images={exteriorImages} />
-
-      <div className="absolute inset-0 bg-black/30 group-hover:bg-black/50 transition duration-500" />
-
-      <div className="absolute bottom-4 left-4 text-white text-lg md:text-xl font-semibold">
-        Exterior Design View
-      </div>
-
-      {/* 🔥 Hover Text */}
-      <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-500">
-        <p className="text-white text-lg md:text-xl font-medium tracking-wide">
-          Tap for more details →
-        </p>
-      </div>
+    {/* 🔥 TYPING TEXT BELOW */}
+    <div className="mt-3 px-2 text-center">
+      <p className="text-[#C6A75E] text-sm font-semibold">
+        <TypingLine text="Modern Exterior Designs" />
+      </p>
+      <p className="text-white/80 text-xs mt-1">
+        <TypingLine text="Built for durability & stunning appeal" delay={15} />
+      </p>
     </div>
   </div>
 

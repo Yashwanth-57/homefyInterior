@@ -35,7 +35,7 @@ export default function Projects() {
           Our Work
         </p>
 
-        <h2 className="text-[#111111] text-4xl md:text-5xl font-light">
+        <h2 className="section-title">
           Crafted Luxury Spaces
         </h2>
 
